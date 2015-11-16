@@ -15,7 +15,6 @@
 		2A4EBC251BF973FE001D770C /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 2A4EBC241BF973FE001D770C /* Podfile */; };
 		2A4EBC321BF9AA21001D770C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A4EBC311BF9AA21001D770C /* Main.storyboard */; };
 		2A4EBC351BF9AC8A001D770C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4EBC341BF9AC8A001D770C /* MainViewController.swift */; };
-		2A4EBC381BF9AE29001D770C /* VistorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4EBC371BF9AE29001D770C /* VistorViewController.swift */; };
 		2A4EBC3A1BF9AE50001D770C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4EBC391BF9AE50001D770C /* HomeViewController.swift */; };
 		2A4EBC3E1BF9AE76001D770C /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A4EBC3D1BF9AE76001D770C /* Home.storyboard */; };
 		2A4EBC401BF9AFFD001D770C /* Message.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A4EBC3F1BF9AFFD001D770C /* Message.storyboard */; };
@@ -24,6 +23,8 @@
 		2A4EBC461BF9B020001D770C /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A4EBC451BF9B020001D770C /* Profile.storyboard */; };
 		2A4EBC481BF9B034001D770C /* Discover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A4EBC471BF9B034001D770C /* Discover.storyboard */; };
 		2A4EBC4A1BF9B043001D770C /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4EBC491BF9B043001D770C /* DiscoverViewController.swift */; };
+		2A4EBC4D1BF9C7AB001D770C /* VistorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4EBC4C1BF9C7AB001D770C /* VistorViewController.swift */; };
+		2A4EBC501BF9C7FA001D770C /* VistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4EBC4F1BF9C7FA001D770C /* VistView.swift */; };
 		F83A7C3CC60135ED4AEE2123 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA6FA0ECB1521F2F9B5F02D0 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -59,7 +60,6 @@
 		2A4EBC241BF973FE001D770C /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		2A4EBC311BF9AA21001D770C /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		2A4EBC341BF9AC8A001D770C /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		2A4EBC371BF9AE29001D770C /* VistorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VistorViewController.swift; sourceTree = "<group>"; };
 		2A4EBC391BF9AE50001D770C /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		2A4EBC3D1BF9AE76001D770C /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		2A4EBC3F1BF9AFFD001D770C /* Message.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Message.storyboard; sourceTree = "<group>"; };
@@ -68,6 +68,8 @@
 		2A4EBC451BF9B020001D770C /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		2A4EBC471BF9B034001D770C /* Discover.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Discover.storyboard; sourceTree = "<group>"; };
 		2A4EBC491BF9B043001D770C /* DiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
+		2A4EBC4C1BF9C7AB001D770C /* VistorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VistorViewController.swift; sourceTree = "<group>"; };
+		2A4EBC4F1BF9C7FA001D770C /* VistView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VistView.swift; sourceTree = "<group>"; };
 		9225B882A871A0523D7F33A5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		BA6FA0ECB1521F2F9B5F02D0 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2949786A0827325E3D4030F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -254,9 +256,26 @@
 		2A4EBC361BF9AE08001D770C /* Vistor */ = {
 			isa = PBXGroup;
 			children = (
-				2A4EBC371BF9AE29001D770C /* VistorViewController.swift */,
+				2A4EBC4E1BF9C7B6001D770C /* View */,
+				2A4EBC4B1BF9C7AB001D770C /* Controller */,
 			);
 			path = Vistor;
+			sourceTree = "<group>";
+		};
+		2A4EBC4B1BF9C7AB001D770C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2A4EBC4C1BF9C7AB001D770C /* VistorViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		2A4EBC4E1BF9C7B6001D770C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2A4EBC4F1BF9C7FA001D770C /* VistView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		8981954707032BE5825F0E74 /* Frameworks */ = {
@@ -456,10 +475,11 @@
 			files = (
 				2A4EBC441BF9B016001D770C /* ProfileViewController.swift in Sources */,
 				2A4EBBF71BF973AB001D770C /* AppDelegate.swift in Sources */,
+				2A4EBC501BF9C7FA001D770C /* VistView.swift in Sources */,
 				2A4EBC4A1BF9B043001D770C /* DiscoverViewController.swift in Sources */,
 				2A4EBC351BF9AC8A001D770C /* MainViewController.swift in Sources */,
-				2A4EBC381BF9AE29001D770C /* VistorViewController.swift in Sources */,
 				2A4EBC3A1BF9AE50001D770C /* HomeViewController.swift in Sources */,
+				2A4EBC4D1BF9C7AB001D770C /* VistorViewController.swift in Sources */,
 				2A4EBC421BF9B00A001D770C /* MessageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,26 +10,39 @@ import UIKit
 
 class MainViewController: UITabBarController {
 
+    //App Key: 1126083890
+    // App Secret: 3e1d1a205cb27b2c9bd59f85396e308f
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+        // 设置控制器
+        setupViewControllers()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    private func setupViewControllers() {
+        
+        // Home
+        addChildViewController("首页", imageName: "tabbar_home", stroyboardName: "Home")
+        // Messsage
+        addChildViewController("消息", imageName: "tabbar_message_center", stroyboardName: "Message")
+        // Discover
+        addChildViewController("发现", imageName: "tabbar_discover", stroyboardName: "Discover")
+        // Profile
+        addChildViewController("我", imageName: "tabbar_profile", stroyboardName: "Profile")
     }
-    */
-
+    
+    private func addChildViewController(title: String, imageName: String, stroyboardName: String) {
+        
+        let sb = UIStoryboard(name: stroyboardName, bundle: nil)
+        
+        let vc = sb.instantiateInitialViewController()!
+        let nav = UINavigationController(rootViewController: vc)
+        addChildViewController(nav)
+        
+        vc.title = title
+        vc.tabBarItem.image = UIImage(named: imageName)
+    }
+    
 }
