@@ -1,0 +1,6 @@
+use_frameworks!
+pod 'Alamofire'
+pod 'XCGLogger'
+pod 'SQLite.swift',
+git: 'https://github.com/stephencelis/SQLite.swift.git'
+pod 'SVProgressHUD'
