@@ -10,9 +10,14 @@ import UIKit
 
 extension UIButton {
     
-    convenience init(title: String) {
+    convenience init(imageName: String, title: String, titleColor: UIColor) {
         self.init()
         
-        self.titleForState(.Normal)
+        setTitle(title, forState: .Normal)
+        setTitleColor(titleColor, forState: .Normal)
+        setBackgroundImage(UIImage(named: imageName), forState: .Normal)
+        
+        
+        sizeToFit()
     }
 }

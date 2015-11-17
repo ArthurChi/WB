@@ -24,15 +24,15 @@ class VistView: UIView {
     }
 
     /// 注册按钮
-    lazy var registerBtn = UIButton(title: "注册")
+    lazy var registerBtn = UIButton(imageName: "common_button_white_disable", title: "注册",titleColor: UIColor.orangeColor())
     /// 登录按钮
-    lazy var loginBtn = UIButton(title: "登录")
+    lazy var loginBtn = UIButton(imageName: "common_button_white_disable", title: "登录", titleColor: UIColor.darkGrayColor())
     /// 图标
     private lazy var iconImgView = UIImageView()
     /// 文字
     private lazy var textShowLabel = UILabel()
     /// 遮罩视图
-    private lazy var showdom = UIImageView(image: UIImage(named: "visitordiscover_feed_mask_smallicon"))
+    private lazy var showdomView = UIImageView(image: UIImage(named: "visitordiscover_feed_mask_smallicon"))
     
     /// 首页视图
     private lazy var homeIconImgView = UIImageView(image: UIImage(named: "visitordiscover_feed_image_house"))
@@ -41,19 +41,24 @@ class VistView: UIView {
     
     private func setupUI() {
         
-        self.backgroundColor = UIColor.whiteColor()
+//        backgroundColor = UIColor.whiteColor()
+        backgroundColor = UIColor(white: 237.0 / 255.0, alpha: 1.0)
         
+        addSubview(revolveImgView)
+        addSubview(showdomView)
         addSubview(iconImgView)
         addSubview(textShowLabel)
-        addSubview(showdom)
         addSubview(registerBtn)
         addSubview(loginBtn)
         
-        addSubview(revolveImgView)
         addSubview(homeIconImgView)
         
         textShowLabel.textAlignment = .Center
         textShowLabel.font = UIFont.systemFontOfSize(14)
+        
+        iconImgView.snp_makeConstraints { (make) -> Void in
+            make.center.equalTo(self)
+        }
         
         homeIconImgView.snp_makeConstraints { (make) -> Void in
             make.center.equalTo(self)
@@ -69,15 +74,50 @@ class VistView: UIView {
             make.height.equalTo(36)
             make.width.equalTo(224)
         }
+        
+        let btnMargin: CGFloat = 30
+        
+        registerBtn.snp_makeConstraints { (make) -> Void in
+            make.top.equalTo(textShowLabel.snp_bottom).offset(10)
+            make.right.equalTo(self.snp_centerX).offset(-btnMargin)
+            make.width.equalTo(100)
+        }
+        
+        loginBtn.snp_makeConstraints { (make) -> Void in
+            make.top.equalTo(registerBtn)
+            make.left.equalTo(self.snp_centerX).offset(btnMargin)
+            make.width.equalTo(registerBtn)
+        }
+        
+        showdomView.snp_makeConstraints { (make) -> Void in
+            make.top.left.right.equalTo(self)
+            make.bottom.equalTo(registerBtn.snp_bottom)
+        }
     }
     
-    func setInfo(text: String, imageName: String?) {
+    func setInfo(imageName: String?, title: String) {
         
-        textShowLabel.text = text
+        textShowLabel.text = title
+        textShowLabel.numberOfLines = 0
+        textShowLabel.textAlignment = .Center
         
         if let imageNameVaild = imageName {
             
             iconImgView.image = UIImage(named: imageNameVaild)
+            
+            sendSubviewToBack(showdomView)
+            
+            revolveImgView.hidden = true
+            homeIconImgView.hidden = true
+            
+        } else {
+            
+            startAnimation()
         }
+    }
+    
+    private func startAnimation() {
+        
+        
     }
 }

@@ -27,6 +27,20 @@ class VistorViewController: UITableViewController {
         
         vistorView = VistView()
         view = vistorView
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "注册", style: .Plain, target: self, action: "")
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "登录", style: .Plain, target: self, action: "loginBtnDidClicked")
+    }
+    
+    @objc private func loginBtnDidClicked() {
+        
+        
+    }
+    
+    @objc private func registBtnDidClicked() {
+        
+        
     }
     
 }
