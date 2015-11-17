@@ -28,14 +28,20 @@ class VistorViewController: UITableViewController {
         vistorView = VistView()
         view = vistorView
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "注册", style: .Plain, target: self, action: "")
+        vistorView?.registerBtn.addTarget(self, action: "registBtnDidClicked", forControlEvents: .TouchUpInside)
+        
+        vistorView?.loginBtn.addTarget(self, action: "loginBtnDidClicked", forControlEvents: .TouchUpInside)
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "注册", style: .Plain, target: self, action: "registBtnDidClicked")
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "登录", style: .Plain, target: self, action: "loginBtnDidClicked")
     }
     
+    // MARK: - Event Response
+    
     @objc private func loginBtnDidClicked() {
         
-        
+        navigationController?.presentViewController(UINavigationController(rootViewController: OAuthViewController()), animated: true, completion: nil)
     }
     
     @objc private func registBtnDidClicked() {

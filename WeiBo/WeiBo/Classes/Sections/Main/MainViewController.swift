@@ -9,9 +9,6 @@
 import UIKit
 
 class MainViewController: UITabBarController {
-
-    //App Key: 1126083890
-    // App Secret: 3e1d1a205cb27b2c9bd59f85396e308f
     
     override func viewDidLoad() {
         super.viewDidLoad()

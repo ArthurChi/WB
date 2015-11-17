@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A49C01E1BFB76CD00FA8FD6 /* OAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A49C01D1BFB76CD00FA8FD6 /* OAuthViewController.swift */; };
+		2A49C0211BFB792900FA8FD6 /* NetworkTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A49C0201BFB792900FA8FD6 /* NetworkTool.swift */; };
 		2A4EBBF71BF973AB001D770C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4EBBF61BF973AB001D770C /* AppDelegate.swift */; };
 		2A4EBBFE1BF973AB001D770C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A4EBBFD1BF973AB001D770C /* Assets.xcassets */; };
 		2A4EBC011BF973AB001D770C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A4EBBFF1BF973AB001D770C /* LaunchScreen.storyboard */; };
@@ -47,6 +49,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2A49C01D1BFB76CD00FA8FD6 /* OAuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthViewController.swift; sourceTree = "<group>"; };
+		2A49C0201BFB792900FA8FD6 /* NetworkTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkTool.swift; sourceTree = "<group>"; };
 		2A4EBBF31BF973AB001D770C /* WeiBo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeiBo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A4EBBF61BF973AB001D770C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2A4EBBFD1BF973AB001D770C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -110,6 +114,22 @@
 				D2949786A0827325E3D4030F /* Pods.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		2A49C01A1BFB769D00FA8FD6 /* OAuth */ = {
+			isa = PBXGroup;
+			children = (
+				2A49C01D1BFB76CD00FA8FD6 /* OAuthViewController.swift */,
+			);
+			path = OAuth;
+			sourceTree = "<group>";
+		};
+		2A49C01F1BFB791A00FA8FD6 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				2A49C0201BFB792900FA8FD6 /* NetworkTool.swift */,
+			);
+			path = Tools;
 			sourceTree = "<group>";
 		};
 		2A4EBBEA1BF973AB001D770C = {
@@ -177,6 +197,7 @@
 		2A4EBC291BF9A9F4001D770C /* General */ = {
 			isa = PBXGroup;
 			children = (
+				2A49C01F1BFB791A00FA8FD6 /* Tools */,
 				2A79EA841BFAD66C002FB4F5 /* Extention */,
 				2A4EBC331BF9AA83001D770C /* Tools */,
 			);
@@ -186,11 +207,11 @@
 		2A4EBC2A1BF9A9F4001D770C /* Sections */ = {
 			isa = PBXGroup;
 			children = (
+				2A49C01A1BFB769D00FA8FD6 /* OAuth */,
 				2A4EBC2B1BF9A9F4001D770C /* Discover */,
 				2A4EBC2C1BF9A9F4001D770C /* Home */,
 				2A4EBC2D1BF9A9F4001D770C /* Main */,
 				2A4EBC2E1BF9A9F4001D770C /* Message */,
-				2A4EBC2F1BF9A9F4001D770C /* OAuth */,
 				2A4EBC301BF9A9F4001D770C /* Profile */,
 			);
 			path = Sections;
@@ -231,13 +252,6 @@
 				2A4EBC411BF9B00A001D770C /* MessageViewController.swift */,
 			);
 			path = Message;
-			sourceTree = "<group>";
-		};
-		2A4EBC2F1BF9A9F4001D770C /* OAuth */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = OAuth;
 			sourceTree = "<group>";
 		};
 		2A4EBC301BF9A9F4001D770C /* Profile */ = {
@@ -484,10 +498,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A49C0211BFB792900FA8FD6 /* NetworkTool.swift in Sources */,
 				2A4EBC441BF9B016001D770C /* ProfileViewController.swift in Sources */,
 				2A79EA861BFAD680002FB4F5 /* UIButton+Extention.swift in Sources */,
 				2A4EBBF71BF973AB001D770C /* AppDelegate.swift in Sources */,
 				2A4EBC501BF9C7FA001D770C /* VistView.swift in Sources */,
+				2A49C01E1BFB76CD00FA8FD6 /* OAuthViewController.swift in Sources */,
 				2A4EBC4A1BF9B043001D770C /* DiscoverViewController.swift in Sources */,
 				2A4EBC351BF9AC8A001D770C /* MainViewController.swift in Sources */,
 				2A4EBC3A1BF9AE50001D770C /* HomeViewController.swift in Sources */,
