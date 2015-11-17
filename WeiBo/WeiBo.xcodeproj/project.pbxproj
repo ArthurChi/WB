@@ -25,6 +25,7 @@
 		2A4EBC4A1BF9B043001D770C /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4EBC491BF9B043001D770C /* DiscoverViewController.swift */; };
 		2A4EBC4D1BF9C7AB001D770C /* VistorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4EBC4C1BF9C7AB001D770C /* VistorViewController.swift */; };
 		2A4EBC501BF9C7FA001D770C /* VistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4EBC4F1BF9C7FA001D770C /* VistView.swift */; };
+		2A79EA861BFAD680002FB4F5 /* UIButton+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A79EA851BFAD680002FB4F5 /* UIButton+Extention.swift */; };
 		F83A7C3CC60135ED4AEE2123 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA6FA0ECB1521F2F9B5F02D0 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +71,7 @@
 		2A4EBC491BF9B043001D770C /* DiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		2A4EBC4C1BF9C7AB001D770C /* VistorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VistorViewController.swift; sourceTree = "<group>"; };
 		2A4EBC4F1BF9C7FA001D770C /* VistView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VistView.swift; sourceTree = "<group>"; };
+		2A79EA851BFAD680002FB4F5 /* UIButton+Extention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Extention.swift"; sourceTree = "<group>"; };
 		9225B882A871A0523D7F33A5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		BA6FA0ECB1521F2F9B5F02D0 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2949786A0827325E3D4030F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 		2A4EBC291BF9A9F4001D770C /* General */ = {
 			isa = PBXGroup;
 			children = (
+				2A79EA841BFAD66C002FB4F5 /* Extention */,
 				2A4EBC331BF9AA83001D770C /* Tools */,
 			);
 			path = General;
@@ -276,6 +279,14 @@
 				2A4EBC4F1BF9C7FA001D770C /* VistView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		2A79EA841BFAD66C002FB4F5 /* Extention */ = {
+			isa = PBXGroup;
+			children = (
+				2A79EA851BFAD680002FB4F5 /* UIButton+Extention.swift */,
+			);
+			path = Extention;
 			sourceTree = "<group>";
 		};
 		8981954707032BE5825F0E74 /* Frameworks */ = {
@@ -474,6 +485,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A4EBC441BF9B016001D770C /* ProfileViewController.swift in Sources */,
+				2A79EA861BFAD680002FB4F5 /* UIButton+Extention.swift in Sources */,
 				2A4EBBF71BF973AB001D770C /* AppDelegate.swift in Sources */,
 				2A4EBC501BF9C7FA001D770C /* VistView.swift in Sources */,
 				2A4EBC4A1BF9B043001D770C /* DiscoverViewController.swift in Sources */,
