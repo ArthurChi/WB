@@ -20,6 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().tintColor = UIColor.orangeColor()
         UITabBar.appearance().tintColor = UIColor.orangeColor()
         
+        window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        window?.rootViewController = NewFeatureViewController()
+        window?.makeKeyAndVisible()
+        
         return true
     }
 

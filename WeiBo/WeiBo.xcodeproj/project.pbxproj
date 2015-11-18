@@ -13,7 +13,6 @@
 		2A49C0211BFB792900FA8FD6 /* NetworkTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A49C0201BFB792900FA8FD6 /* NetworkTool.swift */; };
 		2A4EBBF71BF973AB001D770C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4EBBF61BF973AB001D770C /* AppDelegate.swift */; };
 		2A4EBBFE1BF973AB001D770C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A4EBBFD1BF973AB001D770C /* Assets.xcassets */; };
-		2A4EBC011BF973AB001D770C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A4EBBFF1BF973AB001D770C /* LaunchScreen.storyboard */; };
 		2A4EBC0C1BF973AB001D770C /* WeiBoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4EBC0B1BF973AB001D770C /* WeiBoTests.swift */; };
 		2A4EBC171BF973AB001D770C /* WeiBoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4EBC161BF973AB001D770C /* WeiBoUITests.swift */; };
 		2A4EBC251BF973FE001D770C /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 2A4EBC241BF973FE001D770C /* Podfile */; };
@@ -29,6 +28,7 @@
 		2A4EBC4A1BF9B043001D770C /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4EBC491BF9B043001D770C /* DiscoverViewController.swift */; };
 		2A4EBC4D1BF9C7AB001D770C /* VistorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4EBC4C1BF9C7AB001D770C /* VistorViewController.swift */; };
 		2A4EBC501BF9C7FA001D770C /* VistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4EBC4F1BF9C7FA001D770C /* VistView.swift */; };
+		2A5122821BFC38F100EB0859 /* NewFeatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5122811BFC38F100EB0859 /* NewFeatureViewController.swift */; };
 		2A79EA861BFAD680002FB4F5 /* UIButton+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A79EA851BFAD680002FB4F5 /* UIButton+Extention.swift */; };
 		F83A7C3CC60135ED4AEE2123 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA6FA0ECB1521F2F9B5F02D0 /* Pods.framework */; };
 /* End PBXBuildFile section */
@@ -58,7 +58,6 @@
 		2A4EBBF31BF973AB001D770C /* WeiBo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeiBo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A4EBBF61BF973AB001D770C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2A4EBBFD1BF973AB001D770C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		2A4EBC001BF973AB001D770C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2A4EBC021BF973AB001D770C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2A4EBC071BF973AB001D770C /* WeiBoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeiBoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A4EBC0B1BF973AB001D770C /* WeiBoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeiBoTests.swift; sourceTree = "<group>"; };
@@ -79,6 +78,7 @@
 		2A4EBC491BF9B043001D770C /* DiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		2A4EBC4C1BF9C7AB001D770C /* VistorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VistorViewController.swift; sourceTree = "<group>"; };
 		2A4EBC4F1BF9C7FA001D770C /* VistView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VistView.swift; sourceTree = "<group>"; };
+		2A5122811BFC38F100EB0859 /* NewFeatureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewFeatureViewController.swift; sourceTree = "<group>"; };
 		2A79EA851BFAD680002FB4F5 /* UIButton+Extention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Extention.swift"; sourceTree = "<group>"; };
 		9225B882A871A0523D7F33A5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		BA6FA0ECB1521F2F9B5F02D0 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -181,7 +181,6 @@
 				2A4EBC281BF9A9F4001D770C /* Classes */,
 				2A4EBBF61BF973AB001D770C /* AppDelegate.swift */,
 				2A4EBBFD1BF973AB001D770C /* Assets.xcassets */,
-				2A4EBBFF1BF973AB001D770C /* LaunchScreen.storyboard */,
 				2A4EBC021BF973AB001D770C /* Info.plist */,
 			);
 			path = WeiBo;
@@ -260,6 +259,7 @@
 		2A4EBC2D1BF9A9F4001D770C /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				2A5122801BFC38CE00EB0859 /* NewFeature */,
 				2A4EBC361BF9AE08001D770C /* Vistor */,
 				2A4EBC311BF9AA21001D770C /* Main.storyboard */,
 				2A4EBC341BF9AC8A001D770C /* MainViewController.swift */,
@@ -315,6 +315,14 @@
 				2A4EBC4F1BF9C7FA001D770C /* VistView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		2A5122801BFC38CE00EB0859 /* NewFeature */ = {
+			isa = PBXGroup;
+			children = (
+				2A5122811BFC38F100EB0859 /* NewFeatureViewController.swift */,
+			);
+			path = NewFeature;
 			sourceTree = "<group>";
 		};
 		2A79EA841BFAD66C002FB4F5 /* Extention */ = {
@@ -440,7 +448,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2A4EBC011BF973AB001D770C /* LaunchScreen.storyboard in Resources */,
 				2A4EBC481BF9B034001D770C /* Discover.storyboard in Resources */,
 				2A4EBC3E1BF9AE76001D770C /* Home.storyboard in Resources */,
 				2A4EBBFE1BF973AB001D770C /* Assets.xcassets in Resources */,
@@ -526,6 +533,7 @@
 				2A79EA861BFAD680002FB4F5 /* UIButton+Extention.swift in Sources */,
 				2A4EBBF71BF973AB001D770C /* AppDelegate.swift in Sources */,
 				2A4EBC501BF9C7FA001D770C /* VistView.swift in Sources */,
+				2A5122821BFC38F100EB0859 /* NewFeatureViewController.swift in Sources */,
 				2A49C01E1BFB76CD00FA8FD6 /* OAuthViewController.swift in Sources */,
 				2A4EBC4A1BF9B043001D770C /* DiscoverViewController.swift in Sources */,
 				2A4EBC351BF9AC8A001D770C /* MainViewController.swift in Sources */,
@@ -566,17 +574,6 @@
 			targetProxy = 2A4EBC131BF973AB001D770C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		2A4EBBFF1BF973AB001D770C /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2A4EBC001BF973AB001D770C /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		2A4EBC191BF973AB001D770C /* Debug */ = {
@@ -665,6 +662,7 @@
 			baseConfigurationReference = 9225B882A871A0523D7F33A5 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = BrandAsset;
 				INFOPLIST_FILE = WeiBo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cjfire.WeiBo;
@@ -677,6 +675,7 @@
 			baseConfigurationReference = D2949786A0827325E3D4030F /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = BrandAsset;
 				INFOPLIST_FILE = WeiBo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cjfire.WeiBo;
