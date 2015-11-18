@@ -19,7 +19,10 @@ class UserAccount: NSObject, NSCoding {
     }
     
     var uid: String?
-    var expiresDate: NSDate?
+    var avatar_large: String? // 头像URL
+    var screen_name: String? // nickname
+    
+    var expiresDate: NSDate? // 过期日期
     
     init(dict: [String: AnyObject]) {
         super.init()
@@ -31,16 +34,9 @@ class UserAccount: NSObject, NSCoding {
     
     func encodeWithCoder(aCoder: NSCoder) {
         
-        // 由于要coding的都是简单对象，则考虑使用反射
-        let accountMirror = Mirror(reflecting: self)
-        
-        for child in accountMirror.children {
-
-            if let childVaild = child.label where childVaild != "expires_in" {
-                
-                aCoder.encodeObject((child.value as! AnyObject), forKey: childVaild)
-            }
-        }
+        aCoder.encodeObject(access_token, forKey: "access_token")
+        aCoder.encodeObject(uid, forKey: "uid")
+        aCoder.encodeObject(expiresDate, forKey: "expiresDate")
     }
     
     required init?(coder aDecoder: NSCoder) {

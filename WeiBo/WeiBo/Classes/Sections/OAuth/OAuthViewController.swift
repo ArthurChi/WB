@@ -29,7 +29,7 @@ class OAuthViewController: UIViewController, UIWebViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.webView.loadRequest(NSURLRequest(URL: NetworkTool.sharedTools.oauthUrl))
+        self.webView.loadRequest(NSURLRequest(URL: UserAccountViewModel.shareUserAccountViewModel.oauthUrl))
     }
     
     // MARK: - Event Response
@@ -50,7 +50,6 @@ class OAuthViewController: UIViewController, UIWebViewDelegate {
     }
 
     // MARK:- UIWebViewDelegate
-    
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         
         guard let url = request.URL where url.host == "www.baidu.com" else {
@@ -64,8 +63,15 @@ class OAuthViewController: UIViewController, UIWebViewDelegate {
         
         let code = query.substringFromIndex("code=".endIndex)
         
-        NetworkTool.sharedTools.AccessTocken(code)
+        UserAccountViewModel.shareUserAccountViewModel.loadAccessToken(code) { (success) -> () in
+            
+            if !success { // 失败了
+                self.close()
+            }
+        }
         
         return true
     }
+    
+    
 }

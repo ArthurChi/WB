@@ -9,12 +9,16 @@
 import Foundation
 import Alamofire
 
+protocol NetworkDelegate {
+    
+    func networkToolSuccessResponse(response: AnyObject, request: NSURLRequest)
+    
+    func networkToolFailueResponse(error: NSError, request: NSURLRequest)
+}
+
 class NetworkTool {
     
-    private let appKey = "1126083890"
-    private let appSecrt = "3e1d1a205cb27b2c9bd59f85396e308f"
-    private let redictUrl = "http://www.baidu.com"
-    private let OAuthUrl = "https://api.weibo.com/oauth2/authorize"
+    var delegate: NetworkDelegate?
     
     static let sharedTools: NetworkTool = {
         
@@ -23,41 +27,31 @@ class NetworkTool {
         return tools
     }()
     
-    class func GET(url: String, parameter: [String: String], finish: () -> ()) {
+    class func GET(url: String, parameter: [String: String]) -> NSURLRequest {
         
-        Alamofire.request(.GET, url, parameters: parameter, encoding: .URL, headers: nil).responseJSON { (response) -> Void in
+        let req = Alamofire.request(.GET, url, parameters: parameter, encoding: .URL, headers: nil).responseJSON { (response) -> Void in
             
-            print(response)
+            if response.result.isSuccess {
+                sharedTools.delegate?.networkToolSuccessResponse(response.result.value!, request:response.request!)
+            } else {
+                sharedTools.delegate?.networkToolSuccessResponse(response.result.error!, request: response.request!)
+            }
         }
+        
+        return req.request!
     }
     
-    class func POST(url: String, parameter: [String: String], finish: (AnyObject) -> ()) {
+    class func POST(url: String, parameter: [String: String]) -> NSURLRequest {
         
-        Alamofire.request(.POST, url, parameters: parameter, encoding: .URL, headers: nil).responseJSON { (response) -> Void in
+        let req = Alamofire.request(.POST, url, parameters: parameter, encoding: .URL, headers: nil).responseJSON { (response) -> Void in
             
-            finish(response.result.value!)
+            if response.result.isSuccess {
+                sharedTools.delegate?.networkToolSuccessResponse(response.result.value!, request:response.request!)
+            } else {
+                sharedTools.delegate?.networkToolSuccessResponse(response.result.error!, request: response.request!)
+            }
         }
+        
+        return req.request!
     }
-}
-
-// MARK: - OAuth
-extension NetworkTool {
-    
-    var oauthUrl: NSURL {
-        
-        let urlStr = "\(OAuthUrl)?client_id=\(appKey)&redirect_uri=\(redictUrl)"
-        
-        return NSURL(string: urlStr)!
-    }
-    
-    func AccessTocken(code: String) {
-        
-        let parameters =  ["client_id": appKey, "client_secret": appSecrt, "grant_type": "authorization_code", "code": code, "redirect_uri": redictUrl]
-        
-        NetworkTool.POST("https://api.weibo.com/oauth2/access_token", parameter:parameters) { (response) -> () in
-            
-            
-        }
-    }
-    
 }

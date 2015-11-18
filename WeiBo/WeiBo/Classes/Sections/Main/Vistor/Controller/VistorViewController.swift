@@ -11,7 +11,7 @@ import UIKit
 class VistorViewController: UITableViewController {
 
     // 是否登录标识
-    var loginFlag = false
+    var loginFlag = UserAccountViewModel.shareUserAccountViewModel.loginFlag
     var vistorView: VistView?
     
     override func loadView() {
