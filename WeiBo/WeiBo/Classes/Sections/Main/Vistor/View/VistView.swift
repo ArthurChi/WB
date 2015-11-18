@@ -118,6 +118,15 @@ class VistView: UIView {
     
     private func startAnimation() {
         
+        let anim = CABasicAnimation(keyPath: "transform.rotation")
         
+        anim.toValue = 2 * M_PI
+        anim.repeatCount = MAXFLOAT
+        anim.duration = 20
+        
+        anim.removedOnCompletion = false
+        
+        // 添加到图层
+        revolveImgView.layer.addAnimation(anim, forKey: nil)
     }
 }

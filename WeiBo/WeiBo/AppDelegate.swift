@@ -52,7 +52,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var isNewVision: Bool {
         
-        return true
+        let currentVersion = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"] as! String
+        let lastVersion = NSUserDefaults.standardUserDefaults().stringForKey("version")
+        
+        var newVersion: Bool
+        
+        if lastVersion == nil || currentVersion != lastVersion {
+            newVersion = true
+            
+            NSUserDefaults.standardUserDefaults().setObject("\(lastVersion)", forKey: "version")
+        } else {
+            newVersion = false
+        }
+        
+        return newVersion
     }
 
 }
