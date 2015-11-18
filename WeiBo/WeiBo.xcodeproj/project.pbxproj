@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A19B1001BFBF39C005C027D /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A19B0FF1BFBF39C005C027D /* UserAccount.swift */; };
+		2A19B1051BFC0429005C027D /* UserAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A19B1041BFC0429005C027D /* UserAccountViewModel.swift */; };
 		2A49C01E1BFB76CD00FA8FD6 /* OAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A49C01D1BFB76CD00FA8FD6 /* OAuthViewController.swift */; };
 		2A49C0211BFB792900FA8FD6 /* NetworkTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A49C0201BFB792900FA8FD6 /* NetworkTool.swift */; };
 		2A4EBBF71BF973AB001D770C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4EBBF61BF973AB001D770C /* AppDelegate.swift */; };
@@ -49,6 +51,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2A19B0FF1BFBF39C005C027D /* UserAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAccount.swift; sourceTree = "<group>"; };
+		2A19B1041BFC0429005C027D /* UserAccountViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAccountViewModel.swift; sourceTree = "<group>"; };
 		2A49C01D1BFB76CD00FA8FD6 /* OAuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthViewController.swift; sourceTree = "<group>"; };
 		2A49C0201BFB792900FA8FD6 /* NetworkTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkTool.swift; sourceTree = "<group>"; };
 		2A4EBBF31BF973AB001D770C /* WeiBo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeiBo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,6 +118,22 @@
 				D2949786A0827325E3D4030F /* Pods.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		2A19B0F71BFBF0FC005C027D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2A19B0FF1BFBF39C005C027D /* UserAccount.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2A19B1031BFC0411005C027D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2A19B1041BFC0429005C027D /* UserAccountViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		2A49C01A1BFB769D00FA8FD6 /* OAuth */ = {
@@ -197,6 +217,8 @@
 		2A4EBC291BF9A9F4001D770C /* General */ = {
 			isa = PBXGroup;
 			children = (
+				2A19B1031BFC0411005C027D /* ViewModel */,
+				2A19B0F71BFBF0FC005C027D /* Model */,
 				2A49C01F1BFB791A00FA8FD6 /* Tools */,
 				2A79EA841BFAD66C002FB4F5 /* Extention */,
 				2A4EBC331BF9AA83001D770C /* Tools */,
@@ -498,6 +520,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A19B1051BFC0429005C027D /* UserAccountViewModel.swift in Sources */,
 				2A49C0211BFB792900FA8FD6 /* NetworkTool.swift in Sources */,
 				2A4EBC441BF9B016001D770C /* ProfileViewController.swift in Sources */,
 				2A79EA861BFAD680002FB4F5 /* UIButton+Extention.swift in Sources */,
@@ -506,6 +529,7 @@
 				2A49C01E1BFB76CD00FA8FD6 /* OAuthViewController.swift in Sources */,
 				2A4EBC4A1BF9B043001D770C /* DiscoverViewController.swift in Sources */,
 				2A4EBC351BF9AC8A001D770C /* MainViewController.swift in Sources */,
+				2A19B1001BFBF39C005C027D /* UserAccount.swift in Sources */,
 				2A4EBC3A1BF9AE50001D770C /* HomeViewController.swift in Sources */,
 				2A4EBC4D1BF9C7AB001D770C /* VistorViewController.swift in Sources */,
 				2A4EBC421BF9B00A001D770C /* MessageViewController.swift in Sources */,

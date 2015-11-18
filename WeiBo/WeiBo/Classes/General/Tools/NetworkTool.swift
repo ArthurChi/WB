@@ -23,13 +23,19 @@ class NetworkTool {
         return tools
     }()
     
-    
-    
     class func GET(url: String, parameter: [String: String], finish: () -> ()) {
         
         Alamofire.request(.GET, url, parameters: parameter, encoding: .URL, headers: nil).responseJSON { (response) -> Void in
             
+            print(response)
+        }
+    }
+    
+    class func POST(url: String, parameter: [String: String], finish: (AnyObject) -> ()) {
+        
+        Alamofire.request(.POST, url, parameters: parameter, encoding: .URL, headers: nil).responseJSON { (response) -> Void in
             
+            finish(response.result.value!)
         }
     }
 }
@@ -42,6 +48,16 @@ extension NetworkTool {
         let urlStr = "\(OAuthUrl)?client_id=\(appKey)&redirect_uri=\(redictUrl)"
         
         return NSURL(string: urlStr)!
+    }
+    
+    func AccessTocken(code: String) {
+        
+        let parameters =  ["client_id": appKey, "client_secret": appSecrt, "grant_type": "authorization_code", "code": code, "redirect_uri": redictUrl]
+        
+        NetworkTool.POST("https://api.weibo.com/oauth2/access_token", parameter:parameters) { (response) -> () in
+            
+            
+        }
     }
     
 }

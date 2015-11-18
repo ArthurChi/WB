@@ -64,7 +64,7 @@ class OAuthViewController: UIViewController, UIWebViewDelegate {
         
         let code = query.substringFromIndex("code=".endIndex)
         
-        
+        NetworkTool.sharedTools.AccessTocken(code)
         
         return true
     }
