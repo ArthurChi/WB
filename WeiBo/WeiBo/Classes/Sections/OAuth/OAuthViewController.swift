@@ -78,7 +78,11 @@ class OAuthViewController: UIViewController, UIWebViewDelegate {
                 
                 SVProgressHUD.dismiss()
                 
-                NSNotificationCenter.defaultCenter().postNotificationName(SwitchRootViewControllerNotification, object: nil, userInfo: ["fromClass" : NSStringFromClass(OAuthViewController.self)])
+                self.dismissViewControllerAnimated(true, completion: { () -> Void in
+                    
+                    NSNotificationCenter.defaultCenter().postNotificationName(SwitchRootViewControllerNotification, object: nil, userInfo: ["fromClass" : NSStringFromClass(OAuthViewController.self)])
+                })
+                
             }
         }
         

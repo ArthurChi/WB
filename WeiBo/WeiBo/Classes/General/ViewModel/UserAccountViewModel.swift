@@ -45,10 +45,26 @@ class UserAccountViewModel: NetworkDelegate {
         return true
     }
     
+    var accessToken: String? {
+        
+        if isExpired {
+            
+            return nil
+        }
+        
+        return userAccount?.access_token
+    }
+    
     /// 是否过期
     var loginFlag: Bool {
         
         return userAccount?.access_token != nil && !isExpired
+    }
+    
+    // 头像URL
+    var avatarLargeUrl: NSURL {
+        
+        return NSURL(string: userAccount?.avatar_large ?? "")!
     }
     
     private init() {

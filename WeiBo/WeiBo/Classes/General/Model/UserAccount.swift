@@ -37,6 +37,8 @@ class UserAccount: NSObject, NSCoding {
         aCoder.encodeObject(access_token, forKey: "access_token")
         aCoder.encodeObject(uid, forKey: "uid")
         aCoder.encodeObject(expiresDate, forKey: "expiresDate")
+        aCoder.encodeObject(avatar_large, forKey: "avatar_large")
+        aCoder.encodeObject(screen_name, forKey: "screen_name")
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -44,5 +46,7 @@ class UserAccount: NSObject, NSCoding {
         access_token = aDecoder.decodeObjectForKey("access_token") as? String
         uid = aDecoder.decodeObjectForKey("uid") as? String
         expiresDate = aDecoder.decodeObjectForKey("expiresDate") as? NSDate
+        avatar_large = aDecoder.decodeObjectForKey("avatar_large") as? String
+        screen_name = aDecoder.decodeObjectForKey("screen_name") as? String
     }
 }

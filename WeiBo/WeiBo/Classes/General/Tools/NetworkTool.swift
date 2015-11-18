@@ -54,4 +54,23 @@ class NetworkTool {
         
         return req.request!
     }
+    
+    class func OAuthGET(url: String, parameter: [String: String]?) -> NSURLRequest {
+        
+        var tmpParameters = parameter ?? [:]
+        
+        if let accessTokenVaild = UserAccountViewModel.shareUserAccountViewModel.accessToken {
+            tmpParameters["access_token"] = accessTokenVaild
+        }
+        
+        return GET(url, parameter: tmpParameters)
+    }
+    
+    class func OAuthPOST(url: String, parameter: [String: String]) -> NSURLRequest {
+    
+        var tmpParameters = parameter
+        tmpParameters["access_token"] = UserAccountViewModel.shareUserAccountViewModel.accessToken ?? ""
+        
+        return POST(url, parameter: tmpParameters)
+    }
 }

@@ -60,7 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if lastVersion == nil || currentVersion != lastVersion {
             newVersion = true
             
-            NSUserDefaults.standardUserDefaults().setObject("\(lastVersion)", forKey: "version")
+            NSUserDefaults.standardUserDefaults().setObject("\(currentVersion)", forKey: "version")
         } else {
             newVersion = false
         }
