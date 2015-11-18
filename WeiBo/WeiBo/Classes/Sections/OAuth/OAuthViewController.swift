@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class OAuthViewController: UIViewController, UIWebViewDelegate {
 
@@ -36,7 +37,7 @@ class OAuthViewController: UIViewController, UIWebViewDelegate {
     @objc private func close() {
         
         dismissViewControllerAnimated(true) { () -> Void in
-            
+            SVProgressHUD.dismiss()
         }
     }
     
@@ -66,12 +67,29 @@ class OAuthViewController: UIViewController, UIWebViewDelegate {
         UserAccountViewModel.shareUserAccountViewModel.loadAccessToken(code) { (success) -> () in
             
             if !success { // 失败了
-                self.close()
+                
+                SVProgressHUD.showInfoWithStatus("您的网络不给力")
+                
+                delay(1.0, callFunc: { () -> () in
+                    self.close()
+                })
+                
+            } else { // 成功
+                
+                SVProgressHUD.dismiss()
+                
+                NSNotificationCenter.defaultCenter().postNotificationName(SwitchRootViewControllerNotification, object: nil, userInfo: ["fromClass" : NSStringFromClass(OAuthViewController.self)])
             }
         }
         
-        return true
+        return false
     }
     
+    func webViewDidStartLoad(webView: UIWebView) {
+        SVProgressHUD.show()
+    }
     
+    func webViewDidFinishLoad(webView: UIWebView) {
+        SVProgressHUD.dismiss()
+    }
 }

@@ -26,6 +26,7 @@ class NewFeatureViewController: UICollectionViewController {
         
         self.collectionView?.pagingEnabled = true
         self.collectionView?.bounces = false
+        self.collectionView?.showsHorizontalScrollIndicator = false
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -84,6 +85,10 @@ private class NewFeatureCell: UICollectionViewCell {
         setupUI()
     }
     
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     func setupUI() {
         
         contentView.addSubview(iconImageView)
@@ -94,14 +99,29 @@ private class NewFeatureCell: UICollectionViewCell {
             make.centerX.equalTo(contentView.snp_centerX)
             make.bottom.equalTo(contentView).multipliedBy(0.7)
         }
+        
+        startBtn.addTarget(self, action: "startBtnDidClicked", forControlEvents: .TouchUpInside)
     }
     
     func showBtnAnimation() {
         
         startBtn.hidden = false
+        startBtn.transform = CGAffineTransformMakeScale(0, 0)
+        startBtn.userInteractionEnabled = false
+        
+        UIView.animateWithDuration(1.5, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 10, options: [], animations: { () -> Void in
+            
+            self.startBtn.transform = CGAffineTransformIdentity
+            
+            }) { (finished) -> Void in
+                
+                self.startBtn.userInteractionEnabled = true
+        }
     }
 
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    // MARK: - Event response
+    @objc private func startBtnDidClicked() {
+        
+        NSNotificationCenter.defaultCenter().postNotificationName(SwitchRootViewControllerNotification, object: nil, userInfo: ["fromClass" : NSStringFromClass(NewFeatureViewController.self)])
     }
 }

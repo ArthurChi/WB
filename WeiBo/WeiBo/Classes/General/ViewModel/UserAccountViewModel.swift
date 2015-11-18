@@ -88,7 +88,7 @@ class UserAccountViewModel: NetworkDelegate {
             userAccount?.avatar_large = responseVaild["avatar_large"] as? String
             
             // 持久化
-            NSKeyedArchiver.archiveRootObject(userAccount!, toFile: savePath)
+//            NSKeyedArchiver.archiveRootObject(userAccount!, toFile: savePath)
         }
         
     }
