@@ -63,16 +63,31 @@ class WelcomeViewController: UIViewController {
         
         userImgView.sd_setImageWithURL(UserAccountViewModel.shareUserAccountViewModel.avatarLargeUrl, placeholderImage: UIImage(named: "avatar_default_big"))
         
-        showTextLabel.hidden = true
+        showTextLabel.alpha = 0
     }
     
     func animationShow() {
         
+        userImgView.snp_updateConstraints { (make) -> Void in
+            
+            make.bottom.equalTo(self.view).offset(-self.view.bounds.height + 200)
+        }
+        
         UIView.animateWithDuration(1.5, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 10, options: [], animations: { () -> Void in
             
-            }) { (finished) -> Void in
+            self.view.layoutIfNeeded()
+            
+            }) { (_) -> Void in
              
-                
+                UIView.animateWithDuration(0.25, animations: { () -> Void in
+                    self.showTextLabel.alpha = 1
+                    }, completion: { (_) -> Void in
+                        
+                        delay(0.6, callFunc: { () -> () in
+                            
+                            NSNotificationCenter.defaultCenter().postNotificationName(SwitchRootViewControllerNotification, object: nil, userInfo: ["fromClass":NSStringFromClass(WelcomeViewController.self)])
+                        })
+                })
         }
     }
     

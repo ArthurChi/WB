@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 if notificationInfo == NSStringFromClass(OAuthViewController.self) {
                 
                     self.window?.rootViewController = self.defaultRootViewController
-                } else if notificationInfo == NSStringFromClass(NewFeatureViewController.self) {
+                } else {
                     
                     self.window?.rootViewController = MainViewController()
                 }
