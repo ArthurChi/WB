@@ -13,7 +13,11 @@ class HomeViewController: VistorViewController, NetworkDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        vistorView?.setInfo(nil, title: "关注一些人，回这里看看有什么惊喜")
+        if !UserAccountViewModel.shareUserAccountViewModel.loginFlag {
+            
+            vistorView?.setInfo(nil, title: "关注一些人，回这里看看有什么惊喜")
+            return
+        }
         
         NetworkTool.sharedTools.delegate = self
         
@@ -37,6 +41,6 @@ extension HomeViewController {
     
     func loadData() {
         
-        NetworkTool.OAuthGET("", parameter: nil)
+        NetworkTool.OAuthGET("https://api.weibo.com/2/statuses/home_timeline.json", parameter: nil)
     }
 }
