@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class Status: NSObject, ResponseCollectionSerializable {
+class Status: NSObject {
     
     /// 微博ID
     var id: Int = 0
@@ -49,19 +49,5 @@ final class Status: NSObject, ResponseCollectionSerializable {
         }
         
         return dictionaryWithValuesForKeys(properties).description
-    }
-    
-    // MARK:- ResponseCollectionSerializable
-    class func collection(response response: NSHTTPURLResponse, representation: AnyObject) -> [Status] {
-        
-        var status = [Status]()
-        
-        let jsonStatus = representation["statuses"] as! [[String:AnyObject]]
-        
-        for dict in jsonStatus {
-            status.append(Status(dict: dict))
-        }
-        
-        return status;
     }
 }
