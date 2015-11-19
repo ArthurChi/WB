@@ -19,7 +19,7 @@ class DiscoverViewController: VistorViewController, NetworkDelegate {
     }
     
     // MARK: - NetworkDelegate
-    func networkToolSuccessResponse(response: AnyObject, request: NSURLRequest) {
+    func networkToolSuccessResponse<T>(response: T, request: NSURLRequest) {
         
     }
     

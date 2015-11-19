@@ -85,8 +85,7 @@ class UserAccountViewModel: NetworkDelegate {
     }
     
     // MARK: - NetworkToolDelegate
-    func networkToolSuccessResponse(response: AnyObject, request: NSURLRequest) {
-        
+    func networkToolSuccessResponse<T>(response: T, request: NSURLRequest) {
         guard let responseVaild = response as? [String: AnyObject] else { // 格式错误
             
             return
@@ -109,7 +108,7 @@ class UserAccountViewModel: NetworkDelegate {
         
     }
     
-    func networkToolFailueResponse(error: NSError, request: NSURLRequest) {
+    @objc func networkToolFailueResponse(error: NSError, request: NSURLRequest) {
         finishBlock!(false)
     }
 }

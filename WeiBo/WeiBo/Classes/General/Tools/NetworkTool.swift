@@ -11,7 +11,7 @@ import Alamofire
 
 protocol NetworkDelegate {
     
-    func networkToolSuccessResponse(response: AnyObject, request: NSURLRequest)
+    func networkToolSuccessResponse<T>(response: T, request: NSURLRequest)
     
     func networkToolFailueResponse(error: NSError, request: NSURLRequest)
 }
@@ -29,7 +29,7 @@ class NetworkTool {
     
     class func GET(url: String, parameter: [String: String]) -> NSURLRequest {
         
-        let req = Alamofire.request(.GET, url, parameters: parameter, encoding: .URL, headers: nil).responseJSON { (response) -> Void in
+        let req = Alamofire.request(.GET, url, parameters: parameter).responseJSON { (response) -> Void in
             
             if response.result.isSuccess {
                 sharedTools.delegate?.networkToolSuccessResponse(response.result.value!, request:response.request!)
@@ -72,5 +72,25 @@ class NetworkTool {
         tmpParameters["access_token"] = UserAccountViewModel.shareUserAccountViewModel.accessToken ?? ""
         
         return POST(url, parameter: tmpParameters)
+    }
+    
+    class func GETCollection<T: ResponseCollectionSerializable>(url: String, parameter: [String: String]?, itemType: T, token: Bool = true) {
+        
+        var tmpParameters = parameter ?? [String:String]()
+        
+        if let accessTokenVaild = UserAccountViewModel.shareUserAccountViewModel.accessToken {
+            if token {
+                tmpParameters["access_token"] = accessTokenVaild
+            }
+        }
+        
+        Alamofire.request(.GET, url, parameters: tmpParameters).responseCollection { (response: Response<[T], NSError>) -> Void in
+            
+            if response.result.isSuccess {
+                sharedTools.delegate?.networkToolSuccessResponse(response.result.value!, request:response.request!)
+            } else {
+                sharedTools.delegate?.networkToolSuccessResponse(response.result.error!, request: response.request!)
+            }
+        }
     }
 }

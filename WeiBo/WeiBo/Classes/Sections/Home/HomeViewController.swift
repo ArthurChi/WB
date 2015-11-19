@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class HomeViewController: VistorViewController, NetworkDelegate {
 
@@ -25,15 +26,13 @@ class HomeViewController: VistorViewController, NetworkDelegate {
     }
     
     // MARK: - NetworkDelegate
-    func networkToolSuccessResponse(response: AnyObject, request: NSURLRequest) {
-        
+    func networkToolSuccessResponse<T>(response: T, request: NSURLRequest) {
         print(response)
     }
     
     func networkToolFailueResponse(error: NSError, request: NSURLRequest) {
         
     }
-    
 }
 
 // MARK: - Network
@@ -41,6 +40,6 @@ extension HomeViewController {
     
     func loadData() {
         
-        NetworkTool.OAuthGET("https://api.weibo.com/2/statuses/home_timeline.json", parameter: nil)
+        NetworkTool.GETCollection("https://api.weibo.com/2/statuses/home_timeline.json", parameter: nil, itemType: Status())
     }
 }

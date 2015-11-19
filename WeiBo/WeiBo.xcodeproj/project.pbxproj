@@ -35,6 +35,7 @@
 		2A51228D1BFCC10500EB0859 /* UILabel+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A51228C1BFCC10500EB0859 /* UILabel+Extention.swift */; };
 		2A5F38551BFD5C7900813720 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5F38541BFD5C7900813720 /* Status.swift */; };
 		2A5F38571BFD605200813720 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5F38561BFD605200813720 /* User.swift */; };
+		2A5F38591BFD6C9100813720 /* Alamofire+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5F38581BFD6C9100813720 /* Alamofire+Extention.swift */; };
 		2A79EA861BFAD680002FB4F5 /* UIButton+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A79EA851BFAD680002FB4F5 /* UIButton+Extention.swift */; };
 		F83A7C3CC60135ED4AEE2123 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA6FA0ECB1521F2F9B5F02D0 /* Pods.framework */; };
 /* End PBXBuildFile section */
@@ -91,6 +92,7 @@
 		2A51228C1BFCC10500EB0859 /* UILabel+Extention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Extention.swift"; sourceTree = "<group>"; };
 		2A5F38541BFD5C7900813720 /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
 		2A5F38561BFD605200813720 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		2A5F38581BFD6C9100813720 /* Alamofire+Extention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Alamofire+Extention.swift"; sourceTree = "<group>"; };
 		2A79EA851BFAD680002FB4F5 /* UIButton+Extention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Extention.swift"; sourceTree = "<group>"; };
 		9225B882A871A0523D7F33A5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		BA6FA0ECB1521F2F9B5F02D0 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -371,6 +373,7 @@
 			children = (
 				2A79EA851BFAD680002FB4F5 /* UIButton+Extention.swift */,
 				2A51228C1BFCC10500EB0859 /* UILabel+Extention.swift */,
+				2A5F38581BFD6C9100813720 /* Alamofire+Extention.swift */,
 			);
 			path = Extention;
 			sourceTree = "<group>";
@@ -585,6 +588,7 @@
 				2A19B1001BFBF39C005C027D /* UserAccount.swift in Sources */,
 				2A4EBC3A1BF9AE50001D770C /* HomeViewController.swift in Sources */,
 				2A4EBC4D1BF9C7AB001D770C /* VistorViewController.swift in Sources */,
+				2A5F38591BFD6C9100813720 /* Alamofire+Extention.swift in Sources */,
 				2A51228B1BFCA7EC00EB0859 /* GCD.swift in Sources */,
 				2A4EBC421BF9B00A001D770C /* MessageViewController.swift in Sources */,
 				2A5F38551BFD5C7900813720 /* Status.swift in Sources */,

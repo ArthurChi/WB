@@ -8,16 +8,60 @@
 
 import UIKit
 
-class Status: NSObject {
+final class Status: NSObject, ResponseCollectionSerializable {
     
-    /// ID
-    var ID: Int = 0
- /// 正文
+    /// 微博ID
+    var id: Int = 0
+    /// 微博信息内容
     var text: String?
- /// 创建时间
-    var create_at: String?
- /// 来源
+    /// 微博创建时间
+    var created_at: String?
+    /// 微博来源
     var source: String?
-    
+    /// 缩略图配图数组 key: thumbnail_pic
+    var pic_urls: [[String: String]]?
+    /// 用户模型
     var user: User?
+    
+    override init() {
+        super.init()
+    }
+    
+    init(dict: [String: AnyObject]) {
+        super.init()
+        
+        setValuesForKeysWithDictionary(dict)
+    }
+    
+    override func setValue(value: AnyObject?, forUndefinedKey key: String) {
+    
+        
+    }
+    
+    override var description: String {
+        
+        let children = Mirror(reflecting: self).children
+        var properties: [String] = []
+        
+        for child in children {
+            
+            properties.append(child.label!)
+        }
+        
+        return dictionaryWithValuesForKeys(properties).description
+    }
+    
+    // MARK:- ResponseCollectionSerializable
+    class func collection(response response: NSHTTPURLResponse, representation: AnyObject) -> [Status] {
+        
+        var status = [Status]()
+        
+        let jsonStatus = representation["statuses"] as! [[String:AnyObject]]
+        
+        for dict in jsonStatus {
+            status.append(Status(dict: dict))
+        }
+        
+        return status;
+    }
 }
