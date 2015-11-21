@@ -19,7 +19,7 @@ class Status: NSObject {
     /// 微博来源
     var source: String?
     /// 缩略图配图数组 key: thumbnail_pic
-    var pic_urls: [[String: String]]?
+    lazy var pic_urls = [[String: String]]()
     /// 用户模型
     var user: User?
     
@@ -39,6 +39,13 @@ class Status: NSObject {
             if let dict = value as? [String:AnyObject] {
                 
                 user = User(dict: dict)
+                return
+            }
+        } else if key == "pic_urls" {
+            
+            if let picUrlsVaild = value as? [String:AnyObject] {
+                
+                pic_urls.append(picUrlsVaild["thumbnail_pic"] as! [String:String])
                 return
             }
         }

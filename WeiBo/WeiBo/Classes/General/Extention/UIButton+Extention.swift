@@ -20,4 +20,18 @@ extension UIButton {
         
         sizeToFit()
     }
+    
+    convenience init(title: String, imageName: String?, titleColor: UIColor = UIColor.darkGrayColor(), fontSize: CGFloat = 12) {
+        self.init()
+        
+        setTitle(title, forState: .Normal)
+        setTitleColor(titleColor, forState: .Normal)
+        if let imageNameVaild = imageName {
+            setImage(UIImage(named: imageNameVaild), forState: .Normal)
+        }
+        
+        titleLabel?.font = UIFont.systemFontOfSize(fontSize)
+        
+        sizeToFit()
+    }
 }

@@ -61,13 +61,10 @@ class HomeViewCell: UITableViewCell {
             
         }
         
-        bottomView.backgroundColor = UIColor.greenColor()
         bottomView.snp_makeConstraints { (make) -> Void in
             make.top.equalTo(contentLabel.snp_bottom).offset(StatusCellMargin)
-            make.left.equalTo(contentView.snp_left)
-            make.right.equalTo(contentView.snp_right)
+            make.left.right.bottom.equalTo(contentView)
             make.height.equalTo(44)
-            make.bottom.equalTo(contentView).offset(-StatusCellMargin)
         }
     }
 
