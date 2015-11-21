@@ -31,10 +31,13 @@ class HomeViewController: VistorViewController, NetworkDelegate {
         tableView.registerClass(HomeViewCell.self, forCellReuseIdentifier: HomeViewControllerCellId)
         
         loadData()
+        
+        tableView.estimatedRowHeight = 400
+        tableView.rowHeight = UITableViewAutomaticDimension
     }
     
     // MARK: - tableviewDeleget and datasource
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataSource.count
     }
     

@@ -11,6 +11,8 @@ import UIKit
 final class StatusViewModel: NSObject, ResponseCollectionSerializable {
 
     var statusModel: Status?
+    var userImgUrl: NSURL?
+    var createTimeStr: String?
     
     override init() {
         super.init()
@@ -18,6 +20,11 @@ final class StatusViewModel: NSObject, ResponseCollectionSerializable {
     
     init(status:Status) {
         statusModel = status
+        
+        // 设置用户头像URL
+        userImgUrl = NSURL(string: (statusModel?.user?.profile_image_url ?? ""))
+        // TODO:
+        createTimeStr = "刚刚"
     }
     
     // MARK:- ResponseCollectionSerializable

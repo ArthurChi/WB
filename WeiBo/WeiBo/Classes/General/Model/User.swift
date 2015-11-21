@@ -20,4 +20,12 @@ class User: NSObject {
     var verified_type: Int = 0
     /// 会员等级 0-6
     var mbrank: Int = 0
+    
+    init(dict: [String: AnyObject]) {
+        super.init()
+        
+        setValuesForKeysWithDictionary(dict)
+    }
+    
+    override func setValue(value: AnyObject?, forUndefinedKey key: String) {}
 }

@@ -10,12 +10,27 @@ import UIKit
 
 extension UILabel {
     
-    convenience init(title: String, fontSize: CGFloat) {
-        self.init()
-        
-        self.text = title
-        self.font = UIFont.systemFontOfSize(fontSize)
-        
-        self.sizeToFit()
+    convenience init(title: String,
+        fontSize: CGFloat = 14,
+        color: UIColor = UIColor.darkGrayColor(),
+        screenInset: CGFloat = 0) {
+            
+            self.init()
+            
+            text = title
+            textColor = color
+            font = UIFont.systemFontOfSize(fontSize)
+            
+            numberOfLines = 0
+            
+            if screenInset == 0 {
+                textAlignment = .Center
+            } else {
+                // 设置换行宽度
+                preferredMaxLayoutWidth = UIScreen.mainScreen().bounds.width - 2 * screenInset
+                textAlignment = .Left
+            }
+            
+            sizeToFit()
     }
 }

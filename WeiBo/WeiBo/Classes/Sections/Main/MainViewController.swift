@@ -21,20 +21,19 @@ class MainViewController: UITabBarController {
     private func setupViewControllers() {
         
         // Home
-        addChildViewController("首页", imageName: "tabbar_home", stroyboardName: "Home")
+        addChildViewController("首页", imageName: "tabbar_home", controller: HomeViewController())
         // Messsage
-        addChildViewController("消息", imageName: "tabbar_message_center", stroyboardName: "Message")
+        addChildViewController("消息", imageName: "tabbar_message_center", controller: MessageViewController())
         // Discover
-        addChildViewController("发现", imageName: "tabbar_discover", stroyboardName: "Discover")
+        addChildViewController("发现", imageName: "tabbar_discover", controller: DiscoverViewController())
         // Profile
-        addChildViewController("我", imageName: "tabbar_profile", stroyboardName: "Profile")
+        addChildViewController("我", imageName: "tabbar_profile", controller: ProfileViewController())
     }
     
-    private func addChildViewController(title: String, imageName: String, stroyboardName: String) {
+    private func addChildViewController(title: String, imageName: String, controller: VistorViewController) {
         
-        let sb = UIStoryboard(name: stroyboardName, bundle: nil)
+        let vc = controller
         
-        let vc = sb.instantiateInitialViewController()!
         let nav = UINavigationController(rootViewController: vc)
         addChildViewController(nav)
         

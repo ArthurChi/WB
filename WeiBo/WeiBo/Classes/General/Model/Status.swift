@@ -33,8 +33,21 @@ class Status: NSObject {
         setValuesForKeysWithDictionary(dict)
     }
     
-    override func setValue(value: AnyObject?, forUndefinedKey key: String) {
+    override func setValue(value: AnyObject?, forKey key: String) {
+        
+        if key == "user" {
+            if let dict = value as? [String:AnyObject] {
+                
+                user = User(dict: dict)
+                return
+            }
+        }
+        
+        super.setValue(value, forKey: key)
+    }
     
+    override func setValue(value: AnyObject?, forUndefinedKey key: String) {
+        
         
     }
     
