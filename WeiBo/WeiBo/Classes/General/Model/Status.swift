@@ -19,7 +19,7 @@ class Status: NSObject {
     /// 微博来源
     var source: String?
     /// 缩略图配图数组 key: thumbnail_pic
-    lazy var pic_urls = [[String: String]]()
+    lazy var thumbnailUrls = [NSURL]()
     /// 用户模型
     var user: User?
     
@@ -39,15 +39,21 @@ class Status: NSObject {
             if let dict = value as? [String:AnyObject] {
                 
                 user = User(dict: dict)
-                return
             }
+            return
+            
         } else if key == "pic_urls" {
             
-            if let picUrlsVaild = value as? [String:AnyObject] {
+            if let picUrlsVaild = value as? [[String:AnyObject]] where picUrlsVaild.count > 0 {
                 
-                pic_urls.append(picUrlsVaild["thumbnail_pic"] as! [String:String])
-                return
+                for dict in picUrlsVaild {
+                    
+                    thumbnailUrls.append(NSURL(string: (dict["thumbnail_pic"] as! String))!)
+                }
+                
             }
+            return
+            
         }
         
         super.setValue(value, forKey: key)

@@ -14,7 +14,7 @@ let StatusCellMargin: CGFloat = 12
 let StatusCellIconWidth: CGFloat = 35
 
 class HomeViewCell: UITableViewCell {
-
+    
     var statusViewModel: StatusViewModel? {
         
         didSet {
@@ -22,16 +22,28 @@ class HomeViewCell: UITableViewCell {
             topView.viewModel = statusViewModel
             
             contentLabel.text = statusViewModel!.statusModel?.text
+            
+            pictureShowView.pictureUrls = statusViewModel?.statusModel?.thumbnailUrls
+            
+            pictureShowView.snp_updateConstraints { (make) -> Void in
+                make.height.equalTo(pictureShowView.bounds.size.height)
+            }
         }
     }
     
+    // 头部容器
     private lazy var topView: HomeCellTopView = HomeCellTopView()
     
+    // 内容容器
     private lazy var contentLabel: UILabel = UILabel(title: "微博正文",
         fontSize: 15,
         color: UIColor.darkGrayColor(),
         screenInset: StatusCellMargin)
     
+    // 图片容器
+    private lazy var pictureShowView = PictureShowView()
+    
+    // 底部容器
     private lazy var bottomView: HomeCellBottomView = HomeCellBottomView()
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -39,7 +51,7 @@ class HomeViewCell: UITableViewCell {
         
         setupUI()
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -48,8 +60,13 @@ class HomeViewCell: UITableViewCell {
         
         contentView.addSubview(topView)
         contentView.addSubview(contentLabel)
+        contentView.addSubview(pictureShowView)
         contentView.addSubview(bottomView)
         
+        setupConstrains()
+    }
+    
+    func setupConstrains() {
         topView.snp_makeConstraints { (make) -> Void in
             make.left.right.top.equalTo(contentView)
             make.height.equalTo(StatusCellIconWidth + 2 * StatusCellMargin)
@@ -58,14 +75,28 @@ class HomeViewCell: UITableViewCell {
         contentLabel.snp_makeConstraints { (make) -> Void in
             make.top.equalTo(topView.snp_bottom).offset(StatusCellMargin)
             make.left.equalTo(contentView.snp_left).offset(StatusCellMargin)
-            
+        }
+        
+        pictureShowView.snp_makeConstraints { (make) -> Void in
+            make.left.equalTo(self).offset(StatusCellMargin)
+            make.top.equalTo(contentLabel.snp_bottom)
+            make.width.equalTo(100)
+            make.height.equalTo(0)
         }
         
         bottomView.snp_makeConstraints { (make) -> Void in
-            make.top.equalTo(contentLabel.snp_bottom).offset(StatusCellMargin)
-            make.left.right.bottom.equalTo(contentView)
+            make.top.equalTo(pictureShowView.snp_bottom).offset(StatusCellMargin)
+            make.left.right.equalTo(contentView)
             make.height.equalTo(44)
         }
     }
-
+    
+    func cellHeight(viewModel:StatusViewModel) -> CGFloat {
+        
+        self.statusViewModel = viewModel
+        
+        contentView.layoutIfNeeded()
+        
+        return CGRectGetMaxY(bottomView.frame)
+    }
 }

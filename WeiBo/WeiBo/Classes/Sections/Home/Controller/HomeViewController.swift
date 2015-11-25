@@ -8,20 +8,22 @@
 
 import UIKit
 
-private let HomeViewControllerCellId = "HomeViewControllerCellId"
+let HomeViewControllerCellId = "HomeViewControllerCellId"
 
 class HomeViewController: VistorViewController, NetworkDelegate {
-
+    
     private var dataSource = [StatusViewModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         if !UserAccountViewModel.shareUserAccountViewModel.loginFlag {
             
             vistorView?.setInfo(nil, title: "关注一些人，回这里看看有什么惊喜")
             return
         }
+        
+        tableView.separatorStyle = .None
         
         // prepare
         NetworkTool.sharedTools.delegate = self
@@ -32,8 +34,7 @@ class HomeViewController: VistorViewController, NetworkDelegate {
         
         loadData()
         
-        tableView.estimatedRowHeight = 400
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 200
     }
     
     // MARK: - tableviewDeleget and datasource
@@ -47,9 +48,21 @@ class HomeViewController: VistorViewController, NetworkDelegate {
         
         cell.statusViewModel = dataSource[indexPath.row]
         
+        cell.setNeedsUpdateConstraints()
+        cell.updateConstraintsIfNeeded()
+        
         return cell
     }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        
+        return dataSource[indexPath.row].rowHeight;
+    }
     
     // MARK: - NetworkDelegate
     func networkToolSuccessResponse<T>(response: T, request: NSURLRequest) {

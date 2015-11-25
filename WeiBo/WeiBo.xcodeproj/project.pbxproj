@@ -27,6 +27,7 @@
 		2A5122881BFCA44B00EB0859 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5122871BFCA44B00EB0859 /* WelcomeViewController.swift */; };
 		2A51228B1BFCA7EC00EB0859 /* GCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A51228A1BFCA7EC00EB0859 /* GCD.swift */; };
 		2A51228D1BFCC10500EB0859 /* UILabel+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A51228C1BFCC10500EB0859 /* UILabel+Extention.swift */; };
+		2A586C651C00720000FC1B4A /* PictureShowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A586C641C00720000FC1B4A /* PictureShowView.swift */; };
 		2A5F38551BFD5C7900813720 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5F38541BFD5C7900813720 /* Status.swift */; };
 		2A5F38571BFD605200813720 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5F38561BFD605200813720 /* User.swift */; };
 		2A5F38591BFD6C9100813720 /* Alamofire+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5F38581BFD6C9100813720 /* Alamofire+Extention.swift */; };
@@ -83,6 +84,7 @@
 		2A5122871BFCA44B00EB0859 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		2A51228A1BFCA7EC00EB0859 /* GCD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCD.swift; sourceTree = "<group>"; };
 		2A51228C1BFCC10500EB0859 /* UILabel+Extention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Extention.swift"; sourceTree = "<group>"; };
+		2A586C641C00720000FC1B4A /* PictureShowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureShowView.swift; sourceTree = "<group>"; };
 		2A5F38541BFD5C7900813720 /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
 		2A5F38561BFD605200813720 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		2A5F38581BFD6C9100813720 /* Alamofire+Extention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Alamofire+Extention.swift"; sourceTree = "<group>"; };
@@ -377,6 +379,7 @@
 				2A5F38601BFDB51500813720 /* HomeViewCell.swift */,
 				2A5F38641BFDBD6C00813720 /* HomeCellTopView.swift */,
 				2A5F38661BFDBDE200813720 /* HomeCellBottomView.swift */,
+				2A586C641C00720000FC1B4A /* PictureShowView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -582,6 +585,7 @@
 			files = (
 				2A19B1051BFC0429005C027D /* UserAccountViewModel.swift in Sources */,
 				2A5122881BFCA44B00EB0859 /* WelcomeViewController.swift in Sources */,
+				2A586C651C00720000FC1B4A /* PictureShowView.swift in Sources */,
 				2A5F38671BFDBDE200813720 /* HomeCellBottomView.swift in Sources */,
 				2A49C0211BFB792900FA8FD6 /* NetworkTool.swift in Sources */,
 				2A4EBC441BF9B016001D770C /* ProfileViewController.swift in Sources */,

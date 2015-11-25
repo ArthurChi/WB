@@ -17,6 +17,13 @@ final class StatusViewModel: NSObject, ResponseCollectionSerializable {
     var createTimeStr: String?
     var sourceStr: String?
     
+    lazy var rowHeight: CGFloat = {
+        
+        let homeCell = HomeViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: HomeViewControllerCellId)
+        
+        return homeCell.cellHeight(self)
+    }()
+    
     override init() {
         super.init()
     }

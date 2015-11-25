@@ -32,6 +32,6 @@ extension UIButton {
         
         titleLabel?.font = UIFont.systemFontOfSize(fontSize)
         
-        sizeToFit()
+//        sizeToFit()
     }
 }
