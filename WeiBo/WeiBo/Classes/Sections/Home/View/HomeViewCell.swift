@@ -27,6 +27,7 @@ class HomeViewCell: UITableViewCell {
             
             pictureShowView.snp_updateConstraints { (make) -> Void in
                 make.height.equalTo(pictureShowView.bounds.size.height)
+                make.width.equalTo(pictureShowView.bounds.size.width)
             }
         }
     }
@@ -80,8 +81,8 @@ class HomeViewCell: UITableViewCell {
         pictureShowView.snp_makeConstraints { (make) -> Void in
             make.left.equalTo(self).offset(StatusCellMargin)
             make.top.equalTo(contentLabel.snp_bottom)
-            make.width.equalTo(100)
-            make.height.equalTo(0)
+            make.width.equalTo(300)
+            make.height.equalTo(90)
         }
         
         bottomView.snp_makeConstraints { (make) -> Void in

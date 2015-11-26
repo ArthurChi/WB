@@ -89,7 +89,7 @@ class NetworkTool {
             if response.result.isSuccess {
                 sharedTools.delegate?.networkToolSuccessResponse(response.result.value!, request:response.request!)
             } else {
-                sharedTools.delegate?.networkToolSuccessResponse(response.result.error!, request: response.request!)
+                sharedTools.delegate?.networkToolFailueResponse(response.result.error!, request: response.request!)
             }
         }
     }
