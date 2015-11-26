@@ -34,6 +34,10 @@ class PictureCollectionViewCell: UICollectionViewCell {
     func setupUI() {
         
         contentView.addSubview(imgView)
+        // 设置填充模式
+        imgView.contentMode = UIViewContentMode.ScaleAspectFill
+        // 需要裁切图片
+        imgView.clipsToBounds = true
         
         imgView.snp_makeConstraints { (make) -> Void in
             make.edges.equalTo(contentView.snp_edges)

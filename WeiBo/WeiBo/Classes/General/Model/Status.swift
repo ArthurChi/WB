@@ -56,16 +56,20 @@ class Status: NSObject {
             }
             return
             
+        } else if key == "retweeted_status" {
+        
+            if let retweeted_statusVaild = value as? [String:AnyObject] {
+                
+                retweeted_status = Status(dict: retweeted_statusVaild)
+            }
+            
+            return
         }
         
         super.setValue(value, forKey: key)
     }
     
     override func setValue(value: AnyObject?, forUndefinedKey key: String) {
-        
-        if key == "retweeted_status" {
-            print(key)
-        }
     }
     
     override var description: String {
