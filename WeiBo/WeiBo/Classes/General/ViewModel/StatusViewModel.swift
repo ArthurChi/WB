@@ -17,6 +17,7 @@ final class StatusViewModel: NSObject, ResponseCollectionSerializable {
     var createTimeStr: String?
     var sourceStr: String?
     var thumbImgUrls: [NSURL]?
+    var retweeterText: String? // 转发文本
     var cellReuseID = NormalCellReuseID
     
     lazy var rowHeight: CGFloat = {
@@ -61,16 +62,15 @@ final class StatusViewModel: NSObject, ResponseCollectionSerializable {
         default: vipIconImgName = nil
         }
         
-        // 图片URL集合, 重用标识符
+        // 图片URL集合, 重用标识符, 转发文本
         if statusModel?.retweeted_status == nil {
             thumbImgUrls = statusModel?.thumbnailUrls
             cellReuseID = NormalCellReuseID
         } else {
             thumbImgUrls = statusModel?.retweeted_status?.thumbnailUrls
             cellReuseID = ReteewterCellReuseID
+            retweeterText = "@\(statusModel?.retweeted_status?.user?.screen_name): \(statusModel?.retweeted_status?.text)"
         }
-        
-        
         
         // TODO:
         createTimeStr = "刚刚"

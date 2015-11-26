@@ -36,7 +36,7 @@ class PictureShowView: UICollectionView, UICollectionViewDataSource {
         registerClass(PictureCollectionViewCell.self, forCellWithReuseIdentifier: "PictureCellReuseID")
         dataSource = self
         
-        //        backgroundColor = UIColor.clearColor()
+        backgroundColor = UIColor.clearColor()
     }
     
     required init?(coder aDecoder: NSCoder) {
