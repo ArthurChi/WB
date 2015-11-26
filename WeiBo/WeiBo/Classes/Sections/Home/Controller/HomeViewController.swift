@@ -8,7 +8,8 @@
 
 import UIKit
 
-let HomeViewControllerCellId = "HomeViewControllerCellId"
+let NormalCellReuseID = "NormalCellReuseID"
+let ReteewterCellReuseID = "ReteewterCellReuseID"
 
 class HomeViewController: VistorViewController, NetworkDelegate {
     
@@ -30,7 +31,8 @@ class HomeViewController: VistorViewController, NetworkDelegate {
         tableView.delegate = self
         tableView.dataSource = self
         
-        tableView.registerClass(HomeViewCell.self, forCellReuseIdentifier: HomeViewControllerCellId)
+        tableView.registerClass(NormalCell.self, forCellReuseIdentifier: NormalCellReuseID)
+        tableView.registerClass(ReteewterCell.self, forCellReuseIdentifier: ReteewterCellReuseID)
         
         loadData()
         
@@ -44,9 +46,11 @@ class HomeViewController: VistorViewController, NetworkDelegate {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(HomeViewControllerCellId, forIndexPath: indexPath) as! HomeViewCell
+        let statusViewModel = dataSource[indexPath.row]
         
-        cell.statusViewModel = dataSource[indexPath.row]
+        let cell = tableView.dequeueReusableCellWithIdentifier(statusViewModel.cellReuseID, forIndexPath: indexPath) as! HomeViewCell
+        
+        cell.statusViewModel = statusViewModel
         
         cell.setNeedsUpdateConstraints()
         cell.updateConstraintsIfNeeded()

@@ -16,12 +16,22 @@ final class StatusViewModel: NSObject, ResponseCollectionSerializable {
     var vipIconImgName: String?
     var createTimeStr: String?
     var sourceStr: String?
+    var thumbImgUrls: [NSURL]?
+    var cellReuseID = NormalCellReuseID
     
     lazy var rowHeight: CGFloat = {
         
-        let homeCell = HomeViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: HomeViewControllerCellId)
+        var cellHeight: CGFloat = 0
         
-        return homeCell.cellHeight(self)
+        if self.statusModel!.retweeted_status == nil {
+            let homeCell = NormalCell(style: UITableViewCellStyle.Default, reuseIdentifier: self.cellReuseID)
+            cellHeight = homeCell.cellHeight(self)
+        } else {
+            let homeCell = ReteewterCell(style: UITableViewCellStyle.Default, reuseIdentifier: self.cellReuseID)
+            cellHeight = homeCell.cellHeight(self)
+        }
+        
+        return cellHeight
     }()
     
     override init() {
@@ -50,6 +60,17 @@ final class StatusViewModel: NSObject, ResponseCollectionSerializable {
         case 220: vipIconImgName = "avatar_grassroot"
         default: vipIconImgName = nil
         }
+        
+        // 图片URL集合, 重用标识符
+        if statusModel?.retweeted_status == nil {
+            thumbImgUrls = statusModel?.thumbnailUrls
+            cellReuseID = NormalCellReuseID
+        } else {
+            thumbImgUrls = statusModel?.retweeted_status?.thumbnailUrls
+            cellReuseID = ReteewterCellReuseID
+        }
+        
+        
         
         // TODO:
         createTimeStr = "刚刚"

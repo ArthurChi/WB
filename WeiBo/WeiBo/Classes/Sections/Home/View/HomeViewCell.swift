@@ -23,7 +23,7 @@ class HomeViewCell: UITableViewCell {
             
             contentLabel.text = statusViewModel!.statusModel?.text
             
-            pictureShowView.pictureUrls = statusViewModel?.statusModel?.thumbnailUrls
+            pictureShowView.pictureUrls = statusViewModel?.thumbImgUrls
             
             pictureShowView.snp_updateConstraints { (make) -> Void in
                 make.height.equalTo(pictureShowView.bounds.size.height)
@@ -36,13 +36,13 @@ class HomeViewCell: UITableViewCell {
     private lazy var topView: HomeCellTopView = HomeCellTopView()
     
     // 内容容器
-    private lazy var contentLabel: UILabel = UILabel(title: "微博正文",
+    lazy var contentLabel: UILabel = UILabel(title: "微博正文",
         fontSize: 15,
         color: UIColor.darkGrayColor(),
         screenInset: StatusCellMargin)
     
     // 图片容器
-    private lazy var pictureShowView = PictureShowView()
+    lazy var pictureShowView = PictureShowView()
     
     // 底部容器
     private lazy var bottomView: HomeCellBottomView = HomeCellBottomView()
@@ -64,10 +64,6 @@ class HomeViewCell: UITableViewCell {
         contentView.addSubview(pictureShowView)
         contentView.addSubview(bottomView)
         
-        setupConstrains()
-    }
-    
-    func setupConstrains() {
         topView.snp_makeConstraints { (make) -> Void in
             make.left.right.top.equalTo(contentView)
             make.height.equalTo(StatusCellIconWidth + 2 * StatusCellMargin)
@@ -76,13 +72,6 @@ class HomeViewCell: UITableViewCell {
         contentLabel.snp_makeConstraints { (make) -> Void in
             make.top.equalTo(topView.snp_bottom).offset(StatusCellMargin)
             make.left.equalTo(contentView.snp_left).offset(StatusCellMargin)
-        }
-        
-        pictureShowView.snp_makeConstraints { (make) -> Void in
-            make.left.equalTo(self).offset(StatusCellMargin)
-            make.top.equalTo(contentLabel.snp_bottom)
-            make.width.equalTo(300)
-            make.height.equalTo(90)
         }
         
         bottomView.snp_makeConstraints { (make) -> Void in
