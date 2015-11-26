@@ -24,19 +24,26 @@ class HomeViewController: VistorViewController, NetworkDelegate {
             return
         }
         
-        tableView.separatorStyle = .None
-        
-        // prepare
         NetworkTool.sharedTools.delegate = self
+        
+        loadData()
+        
+        setupTableView()
+    }
+    
+    func setupTableView() {
+        
+        tableView.separatorStyle = .None
+        tableView.estimatedRowHeight = 200
+        
         tableView.delegate = self
         tableView.dataSource = self
         
         tableView.registerClass(NormalCell.self, forCellReuseIdentifier: NormalCellReuseID)
         tableView.registerClass(ReteewterCell.self, forCellReuseIdentifier: ReteewterCellReuseID)
         
-        loadData()
-        
-        tableView.estimatedRowHeight = 200
+        refreshControl = UIRefreshControl()
+        refreshControl?.addTarget(self, action: "loadData", forControlEvents: UIControlEvents.ValueChanged)
     }
     
     // MARK: - tableviewDeleget and datasource
@@ -71,12 +78,26 @@ class HomeViewController: VistorViewController, NetworkDelegate {
     // MARK: - NetworkDelegate
     func networkToolSuccessResponse<T>(response: T, request: NSURLRequest) {
         
-        self.dataSource = response as! [StatusViewModel]
+        dataSource = response as! [StatusViewModel]
+        
+//        let dataSourceTmp = response as! [StatusViewModel]
+        
+//        self.dataSource = dataSourceTmp + dataSource
+        
+//        for statusviewmodel in dataSource {
+        
+//            print((statusviewmodel.statusModel?.id)!)
+//        }
+        
+        refreshControl?.endRefreshing()
         
         tableView.reloadData()
     }
     
     func networkToolFailueResponse(error: NSError, request: NSURLRequest) {
+        
+        refreshControl?.endRefreshing()
+        
         
     }
 }
@@ -86,7 +107,15 @@ extension HomeViewController {
     
     func loadData() {
         
-        NetworkTool.GETCollection("https://api.weibo.com/2/statuses/home_timeline.json", parameter: nil, itemType: StatusViewModel())
+        var parameters = [String:String]()
+        
+        if dataSource.count != 0 {
+            parameters["since_id"] = "\(dataSource.first?.statusModel?.id)"
+        } else {
+            parameters["since_id"] = "0"
+        }
+        
+        NetworkTool.GETCollection("https://api.weibo.com/2/statuses/home_timeline.json", parameter: parameters, itemType: StatusViewModel())
     }
 }
 

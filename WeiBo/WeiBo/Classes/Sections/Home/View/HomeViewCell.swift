@@ -18,7 +18,7 @@ class HomeViewCell: UITableViewCell {
     var statusViewModel: StatusViewModel? {
         
         didSet {
-            
+
             topView.viewModel = statusViewModel
             
             contentLabel.text = statusViewModel!.statusModel?.text

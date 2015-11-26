@@ -43,15 +43,12 @@ class PictureShowView: UICollectionView, UICollectionViewDataSource {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     override func sizeThatFits(size: CGSize) -> CGSize {
-        
         
         let rowCount: CGFloat = 3
         
         let maxWidth = UIScreen.mainScreen().bounds.width - 2 * StatusCellMargin
         let itemWidth = (maxWidth - 2 * StatusPictureViewItemMargin) / rowCount
-        
         
         let layout = collectionViewLayout as! UICollectionViewFlowLayout
         layout.itemSize = CGSize(width: itemWidth, height: itemWidth)

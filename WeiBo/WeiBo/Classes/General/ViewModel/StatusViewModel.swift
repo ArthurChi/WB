@@ -69,7 +69,7 @@ final class StatusViewModel: NSObject, ResponseCollectionSerializable {
         } else {
             thumbImgUrls = statusModel?.retweeted_status?.thumbnailUrls
             cellReuseID = ReteewterCellReuseID
-            retweeterText = "@\(statusModel?.retweeted_status?.user?.screen_name): \(statusModel?.retweeted_status?.text)"
+            retweeterText = "@\((statusModel?.retweeted_status?.user?.screen_name)!): \((statusModel?.retweeted_status?.text)!)"
         }
         
         // TODO:
