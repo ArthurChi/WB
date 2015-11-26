@@ -49,7 +49,6 @@ class PictureShowView: UICollectionView, UICollectionViewDataSource {
         
         let rowCount: CGFloat = 3
         
-        
         let maxWidth = UIScreen.mainScreen().bounds.width - 2 * StatusCellMargin
         let itemWidth = (maxWidth - 2 * StatusPictureViewItemMargin) / rowCount
         
@@ -58,7 +57,7 @@ class PictureShowView: UICollectionView, UICollectionViewDataSource {
         layout.itemSize = CGSize(width: itemWidth, height: itemWidth)
         
         
-        guard let count = pictureUrls?.count else {
+        guard let count = pictureUrls?.count where count != 0 else {
             
             return CGSizeZero
         }
@@ -84,8 +83,6 @@ class PictureShowView: UICollectionView, UICollectionViewDataSource {
             
             return CGSize(width: w, height: h)
         }
-        
-        
     }
     
     // MARK: - UICollectionViewDataSource

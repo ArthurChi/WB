@@ -22,6 +22,8 @@ class Status: NSObject {
     lazy var thumbnailUrls = [NSURL]()
     /// 用户模型
     var user: User?
+    /// 转发微博
+    var retweeted_status: Status?
     
     override init() {
         super.init()
@@ -61,7 +63,9 @@ class Status: NSObject {
     
     override func setValue(value: AnyObject?, forUndefinedKey key: String) {
         
-        
+        if key == "retweeted_status" {
+            print(key)
+        }
     }
     
     override var description: String {
