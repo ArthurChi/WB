@@ -15,6 +15,7 @@ class HomeViewController: VistorViewController, NetworkDelegate {
     
     private var dataSource = [StatusViewModel]()
     
+    // MARK: - life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,8 +43,7 @@ class HomeViewController: VistorViewController, NetworkDelegate {
         tableView.registerClass(NormalCell.self, forCellReuseIdentifier: NormalCellReuseID)
         tableView.registerClass(ReteewterCell.self, forCellReuseIdentifier: ReteewterCellReuseID)
         
-        refreshControl = UIRefreshControl()
-        refreshControl?.tintColor = UIColor.clearColor()
+        refreshControl = WBRefreshController()
         refreshControl?.addTarget(self, action: "loadData", forControlEvents: UIControlEvents.ValueChanged)
     }
     
@@ -89,8 +89,6 @@ class HomeViewController: VistorViewController, NetworkDelegate {
     func networkToolFailueResponse(error: NSError, request: NSURLRequest) {
         
         refreshControl?.endRefreshing()
-        
-        
     }
 }
 

@@ -40,6 +40,9 @@
 		2AEC42A71C07F41100068764 /* PictureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEC429F1C07F41100068764 /* PictureCollectionViewCell.swift */; };
 		2AEC42A81C07F41100068764 /* PictureShowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEC42A01C07F41100068764 /* PictureShowView.swift */; };
 		2AEC42A91C07F41100068764 /* ReteewterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEC42A11C07F41100068764 /* ReteewterCell.swift */; };
+		2AEC42AB1C07F4D100068764 /* WBRefreshController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEC42AA1C07F4D100068764 /* WBRefreshController.swift */; };
+		2AEC42AD1C07F51000068764 /* WBRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEC42AC1C07F51000068764 /* WBRefreshView.swift */; };
+		2AEC42AF1C07F52E00068764 /* WBRefreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AEC42AE1C07F52E00068764 /* WBRefreshView.xib */; };
 		F83A7C3CC60135ED4AEE2123 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA6FA0ECB1521F2F9B5F02D0 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -100,6 +103,9 @@
 		2AEC429F1C07F41100068764 /* PictureCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureCollectionViewCell.swift; sourceTree = "<group>"; };
 		2AEC42A01C07F41100068764 /* PictureShowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureShowView.swift; sourceTree = "<group>"; };
 		2AEC42A11C07F41100068764 /* ReteewterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReteewterCell.swift; sourceTree = "<group>"; };
+		2AEC42AA1C07F4D100068764 /* WBRefreshController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WBRefreshController.swift; sourceTree = "<group>"; };
+		2AEC42AC1C07F51000068764 /* WBRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WBRefreshView.swift; sourceTree = "<group>"; };
+		2AEC42AE1C07F52E00068764 /* WBRefreshView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WBRefreshView.xib; sourceTree = "<group>"; };
 		9225B882A871A0523D7F33A5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		BA6FA0ECB1521F2F9B5F02D0 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2949786A0827325E3D4030F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -415,6 +421,9 @@
 		2AEC42A21C07F41100068764 /* Refresh */ = {
 			isa = PBXGroup;
 			children = (
+				2AEC42AA1C07F4D100068764 /* WBRefreshController.swift */,
+				2AEC42AC1C07F51000068764 /* WBRefreshView.swift */,
+				2AEC42AE1C07F52E00068764 /* WBRefreshView.xib */,
 			);
 			path = Refresh;
 			sourceTree = "<group>";
@@ -536,6 +545,7 @@
 			files = (
 				2A4EBBFE1BF973AB001D770C /* Assets.xcassets in Resources */,
 				2A4EBC251BF973FE001D770C /* Podfile in Resources */,
+				2AEC42AF1C07F52E00068764 /* WBRefreshView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -620,6 +630,7 @@
 				2A4EBBF71BF973AB001D770C /* AppDelegate.swift in Sources */,
 				2A4EBC501BF9C7FA001D770C /* VistView.swift in Sources */,
 				2AEC42A71C07F41100068764 /* PictureCollectionViewCell.swift in Sources */,
+				2AEC42AB1C07F4D100068764 /* WBRefreshController.swift in Sources */,
 				2A5122821BFC38F100EB0859 /* NewFeatureViewController.swift in Sources */,
 				2A5F38571BFD605200813720 /* User.swift in Sources */,
 				2A5122851BFCA15300EB0859 /* NotificationNames.swift in Sources */,
@@ -630,6 +641,7 @@
 				2A4EBC4D1BF9C7AB001D770C /* VistorViewController.swift in Sources */,
 				2A5F38631BFDB9F300813720 /* StatusViewModel.swift in Sources */,
 				2AEC42A51C07F41100068764 /* HomeViewCell.swift in Sources */,
+				2AEC42AD1C07F51000068764 /* WBRefreshView.swift in Sources */,
 				2A5F38591BFD6C9100813720 /* Alamofire+Extention.swift in Sources */,
 				2A51228B1BFCA7EC00EB0859 /* GCD.swift in Sources */,
 				2A4EBC421BF9B00A001D770C /* MessageViewController.swift in Sources */,
