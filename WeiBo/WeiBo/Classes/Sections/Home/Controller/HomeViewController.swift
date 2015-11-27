@@ -43,6 +43,7 @@ class HomeViewController: VistorViewController, NetworkDelegate {
         tableView.registerClass(ReteewterCell.self, forCellReuseIdentifier: ReteewterCellReuseID)
         
         refreshControl = UIRefreshControl()
+        refreshControl?.tintColor = UIColor.clearColor()
         refreshControl?.addTarget(self, action: "loadData", forControlEvents: UIControlEvents.ValueChanged)
     }
     
@@ -79,15 +80,6 @@ class HomeViewController: VistorViewController, NetworkDelegate {
     func networkToolSuccessResponse<T>(response: T, request: NSURLRequest) {
         
         dataSource = response as! [StatusViewModel]
-        
-//        let dataSourceTmp = response as! [StatusViewModel]
-        
-//        self.dataSource = dataSourceTmp + dataSource
-        
-//        for statusviewmodel in dataSource {
-        
-//            print((statusviewmodel.statusModel?.id)!)
-//        }
         
         refreshControl?.endRefreshing()
         
