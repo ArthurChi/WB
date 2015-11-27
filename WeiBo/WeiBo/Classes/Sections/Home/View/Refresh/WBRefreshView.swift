@@ -20,7 +20,13 @@ class WBRefreshView: UIView {
     
     var rotateFlag: Bool = false {
         didSet {
-            startAnimation()
+            dragAnimation()
+            
+            if rotateFlag {
+                refreshTextLabel.text = "松开开始刷新"
+            } else {
+                refreshTextLabel.text = "下拉刷新"
+            }
         }
     }
     
@@ -36,22 +42,27 @@ class WBRefreshView: UIView {
         return refreshView
     }
     
-    func startAnimation() {
+    func dragAnimation() {
         
         var rote = CGFloat(M_PI)
-        
-        if rotateFlag {
-            rote -= 0.000001
-        } else {
-            rote += 0.000001
-        }
+        rote += rotateFlag ? -0.000001 : 0.000001
         
         UIView.animateWithDuration(0.5) { () -> Void in
             self.refreshImgView.transform = CGAffineTransformRotate(self.refreshImgView.transform, rote)
         }
     }
     
+    func startAnimation() {
+        
+        freshView.hidden = true
+        loadImgView.hidden = false
+        loadLabel.hidden = false
+    }
+    
     func stopAnimation() {
         
+        freshView.hidden = false
+        loadImgView.hidden = true
+        loadLabel.hidden = true
     }
 }

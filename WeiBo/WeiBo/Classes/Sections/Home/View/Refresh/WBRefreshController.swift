@@ -44,6 +44,18 @@ class WBRefreshController: UIRefreshControl {
         }
     }
     
+    override func beginRefreshing() {
+        super.beginRefreshing()
+        
+        refreshView.startAnimation()
+    }
+    
+    override func endRefreshing() {
+        super.endRefreshing()
+        
+        refreshView.stopAnimation()
+    }
+    
     // MARK: - KVO
     override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
         

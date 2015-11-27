@@ -15,6 +15,14 @@ class HomeViewController: VistorViewController, NetworkDelegate {
     
     private var dataSource = [StatusViewModel]()
     
+    private lazy var pullupView: UIActivityIndicatorView = {
+        
+        let indicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
+        indicator.color = UIColor.lightGrayColor()
+        
+        return indicator
+    }()
+    
     // MARK: - life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +53,8 @@ class HomeViewController: VistorViewController, NetworkDelegate {
         
         refreshControl = WBRefreshController()
         refreshControl?.addTarget(self, action: "loadData", forControlEvents: UIControlEvents.ValueChanged)
+        
+        tableView.tableFooterView = pullupView
     }
     
     // MARK: - tableviewDeleget and datasource
@@ -96,6 +106,8 @@ class HomeViewController: VistorViewController, NetworkDelegate {
 extension HomeViewController {
     
     func loadData() {
+        
+        refreshControl?.beginRefreshing()
         
         var parameters = [String:String]()
         

@@ -74,7 +74,7 @@
                 <outlet property="refreshImgView" destination="iJn-I2-hUG" id="jtD-Jd-AfP"/>
                 <outlet property="refreshTextLabel" destination="25T-RQ-7Wb" id="CJl-SF-K4l"/>
             </connections>
-            <point key="canvasLocation" x="1266" y="381"/>
+            <point key="canvasLocation" x="769" y="234"/>
         </view>
     </objects>
     <resources>
