@@ -121,20 +121,21 @@ extension HomeViewController {
         
         refreshControl?.beginRefreshing()
         
-        var parameters = [String:String]()
+        var parameters = [String:AnyObject]()
         
         if pullupView.isAnimating() {
-            parameters["max_id"] = "\(dataSource.last!.statusModel!.id)"
+            parameters["max_id"] = dataSource.last?.statusModel.id ?? 0
         } else {
             if dataSource.count != 0 {
-                print("id is \(dataSource.first!.statusModel!.id)")
-                parameters["since_id"] = "\(dataSource.first!.statusModel!.id)"
+                print("id is \(dataSource.first?.statusModel.id ?? 0)")
+                parameters["since_id"] = dataSource.first?.statusModel.id ?? 0
             } else {
-                parameters["since_id"] = "0"
+                parameters["since_id"] = 0
             }
         }
         
-        netWorkManager.GETCollection("https://api.weibo.com/2/statuses/home_timeline.json", parameter: parameters, itemType: StatusViewModel())
+        // TODO: - 这里有问题
+        netWorkManager.GETCollection("https://api.weibo.com/2/statuses/home_timeline.json", parameter: parameters, itemType: StatusViewModel(status: Status()))
     }
 }
 

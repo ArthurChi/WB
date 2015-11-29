@@ -10,7 +10,7 @@ import UIKit
 
 final class StatusViewModel: NSObject, ResponseCollectionSerializable {
     
-    var statusModel: Status?
+    var statusModel: Status
     var userImgUrl: NSURL?
     var userMemberImgName: String?
     var vipIconImgName: String?
@@ -24,7 +24,7 @@ final class StatusViewModel: NSObject, ResponseCollectionSerializable {
         
         var cellHeight: CGFloat = 0
         
-        if self.statusModel!.retweeted_status == nil {
+        if self.statusModel.retweeted_status == nil {
             let homeCell = NormalCell(style: UITableViewCellStyle.Default, reuseIdentifier: self.cellReuseID)
             cellHeight = homeCell.cellHeight(self)
         } else {
@@ -35,20 +35,17 @@ final class StatusViewModel: NSObject, ResponseCollectionSerializable {
         return cellHeight
     }()
     
-    override init() {
-        super.init()
-    }
-    
     init(status:Status) {
-        super.init()
         
         statusModel = status
         
         // 设置用户头像URL
-        userImgUrl = NSURL(string: (statusModel?.user?.profile_image_url ?? ""))
+        userImgUrl = NSURL(string: (statusModel.user?.profile_image_url ?? ""))
+        
+        super.init()
         
         // 用户会员
-        if statusModel?.user?.mbrank > 0 && statusModel?.user?.mbrank < 7 {
+        if statusModel.user?.mbrank > 0 && statusModel.user?.mbrank < 7 {
             userMemberImgName = "common_icon_membership_level\(status.user!.mbrank)"
         } else {
             userMemberImgName = "common_icon_membership_expired"
@@ -63,13 +60,13 @@ final class StatusViewModel: NSObject, ResponseCollectionSerializable {
         }
         
         // 图片URL集合, 重用标识符, 转发文本
-        if statusModel?.retweeted_status == nil {
-            thumbImgUrls = statusModel?.thumbnailUrls
+        if statusModel.retweeted_status == nil {
+            thumbImgUrls = statusModel.thumbnailUrls
             cellReuseID = NormalCellReuseID
         } else {
-            thumbImgUrls = statusModel?.retweeted_status?.thumbnailUrls
+            thumbImgUrls = statusModel.retweeted_status?.thumbnailUrls
             cellReuseID = ReteewterCellReuseID
-            retweeterText = "@\((statusModel?.retweeted_status?.user?.screen_name)!): \((statusModel?.retweeted_status?.text)!)"
+            retweeterText = "@\((statusModel.retweeted_status?.user?.screen_name)!): \((statusModel.retweeted_status?.text)!)"
         }
         
         // TODO:

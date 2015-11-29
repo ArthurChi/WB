@@ -67,9 +67,9 @@ class NetworkTool {
         return POST(url, parameter: tmpParameters)
     }
     
-    func GETCollection<T: ResponseCollectionSerializable>(url: String, parameter: [String: String]?, itemType: T, token: Bool = true) {
+    func GETCollection<T: ResponseCollectionSerializable>(url: String, parameter: [String: AnyObject]?, itemType: T, token: Bool = true) {
         
-        var tmpParameters = parameter ?? [String:String]()
+        var tmpParameters = parameter ?? [String:AnyObject]()
         
         if let accessTokenVaild = UserAccountViewModel.shareUserAccountViewModel.accessToken {
             if token {

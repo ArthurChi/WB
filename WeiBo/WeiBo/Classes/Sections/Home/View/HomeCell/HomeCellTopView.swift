@@ -33,7 +33,7 @@ class HomeCellTopView: UIView {
         didSet {
             userImgView.sd_setImageWithURL(viewModel?.userImgUrl, placeholderImage: UIImage(named: "avatar_default_big"))
             // 用户名
-            userNameLabel.text = viewModel?.statusModel?.user?.screen_name
+            userNameLabel.text = viewModel?.statusModel.user?.screen_name
             
             // 会员
             if let userMemberVaild = viewModel?.userMemberImgName {

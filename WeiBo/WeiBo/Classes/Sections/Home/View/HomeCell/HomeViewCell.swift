@@ -21,7 +21,7 @@ class HomeViewCell: UITableViewCell {
 
             topView.viewModel = statusViewModel
             
-            contentLabel.text = statusViewModel!.statusModel?.text
+            contentLabel.text = statusViewModel!.statusModel.text
             
             pictureShowView.pictureUrls = statusViewModel?.thumbImgUrls
             

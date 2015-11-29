@@ -11,7 +11,7 @@ import UIKit
 class Status: NSObject {
     
     /// 微博ID
-    var id: Int = 0
+    var id: NSNumber = 0
     /// 微博信息内容
     var text: String?
     /// 微博创建时间

@@ -15,7 +15,7 @@ class NormalCell: HomeViewCell {
             
             pictureShowView.snp_updateConstraints { (make) -> Void in
                 
-                let count = (statusViewModel?.statusModel?.thumbnailUrls.count ?? 0)
+                let count = (statusViewModel?.statusModel.thumbnailUrls.count ?? 0)
                 make.top.equalTo(contentLabel.snp_bottom).offset(count > 0 ? StatusCellMargin:0)
             }
         }
