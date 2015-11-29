@@ -44,7 +44,6 @@ class WBRefreshController: UIRefreshControl {
     
     override func beginRefreshing() {
         super.beginRefreshing()
-        
         refreshView.startAnimation()
     }
     

@@ -47,9 +47,6 @@ class HomeViewController: VistorViewController, NetworkDelegate {
         tableView.separatorStyle = .None
         tableView.estimatedRowHeight = 200
         
-        tableView.delegate = self
-        tableView.dataSource = self
-        
         tableView.registerClass(NormalCell.self, forCellReuseIdentifier: NormalCellReuseID)
         tableView.registerClass(ReteewterCell.self, forCellReuseIdentifier: ReteewterCellReuseID)
         
@@ -72,8 +69,12 @@ class HomeViewController: VistorViewController, NetworkDelegate {
         
         cell.statusViewModel = statusViewModel
         
-        cell.setNeedsUpdateConstraints()
-        cell.updateConstraintsIfNeeded()
+        if indexPath.row == dataSource.count - 1 && !pullupView.isAnimating() {
+            
+            pullupView.startAnimating()
+            
+            loadData()
+        }
         
         return cell
     }
@@ -91,13 +92,20 @@ class HomeViewController: VistorViewController, NetworkDelegate {
     // MARK: - NetworkDelegate
     func networkToolSuccessResponse<T>(response: T, request: NSURLRequest) {
         
-        dataSource = response as! [StatusViewModel] + dataSource
-        
-        print(dataSource.count)
+        if pullupView.isAnimating() {
+            var resp = response as! [StatusViewModel]
+            resp.removeFirst()
+            dataSource += resp
+        } else {
+            dataSource = response as! [StatusViewModel] + dataSource
+        }
         
         refreshControl?.endRefreshing()
+        pullupView.stopAnimating()
         
         tableView.reloadData()
+        
+        print(dataSource.count)
     }
     
     func networkToolFailueResponse(error: NSError, request: NSURLRequest) {
@@ -115,10 +123,15 @@ extension HomeViewController {
         
         var parameters = [String:String]()
         
-        if dataSource.count != 0 {
-            parameters["since_id"] = "\(dataSource.first!.statusModel!.id)"
+        if pullupView.isAnimating() {
+            parameters["max_id"] = "\(dataSource.last!.statusModel!.id)"
         } else {
-            parameters["since_id"] = "0"
+            if dataSource.count != 0 {
+                print("id is \(dataSource.first!.statusModel!.id)")
+                parameters["since_id"] = "\(dataSource.first!.statusModel!.id)"
+            } else {
+                parameters["since_id"] = "0"
+            }
         }
         
         netWorkManager.GETCollection("https://api.weibo.com/2/statuses/home_timeline.json", parameter: parameters, itemType: StatusViewModel())

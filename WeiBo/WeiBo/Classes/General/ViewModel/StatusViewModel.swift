@@ -83,13 +83,15 @@ final class StatusViewModel: NSObject, ResponseCollectionSerializable {
         
         var status = [StatusViewModel]()
         
-        let jsonStatus = representation["statuses"] as! [[String:AnyObject]]
-        
-        for dict in jsonStatus {
-            status.append(StatusViewModel(status: Status(dict: dict)))
+        if let jsonStatus = representation["statuses"] as? [[String:AnyObject]] {
+            for dict in jsonStatus {
+                status.append(StatusViewModel(status: Status(dict: dict)))
+            }
+        } else {
+            print("返回结果是\(representation)")
         }
         
-        print("新收到\(status.count)条信息")
+        print("新增\(status.count)条信息")
         
         return status;
     }

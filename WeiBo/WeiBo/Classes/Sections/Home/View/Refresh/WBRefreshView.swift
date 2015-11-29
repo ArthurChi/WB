@@ -12,7 +12,6 @@ class WBRefreshView: UIView {
 
     @IBOutlet weak var refreshImgView: UIImageView!
     @IBOutlet weak var loadImgView: UIImageView!
-    @IBOutlet weak var loadLabel: UILabel!
     
     @IBOutlet weak var refreshTextLabel: UILabel!
 
@@ -36,9 +35,6 @@ class WBRefreshView: UIView {
         
         let refreshView = nibView.instantiateWithOwner(nil, options: nil).last as! WBRefreshView
         
-        refreshView.loadImgView.hidden = true
-        refreshView.loadLabel.hidden = true
-        
         return refreshView
     }
     
@@ -55,8 +51,6 @@ class WBRefreshView: UIView {
     func startAnimation() {
         
         freshView.hidden = true
-        loadImgView.hidden = false
-        loadLabel.hidden = false
         
         let animaKey = "transform.rotation"
         
@@ -76,7 +70,5 @@ class WBRefreshView: UIView {
     func stopAnimation() {
         
         freshView.hidden = false
-        loadImgView.hidden = true
-        loadLabel.hidden = true
     }
 }

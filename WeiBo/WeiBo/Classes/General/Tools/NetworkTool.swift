@@ -20,13 +20,6 @@ class NetworkTool {
     
     var delegate: NetworkDelegate?
     
-    //    static let sharedTools: NetworkTool = {
-    //
-    //        let tools = NetworkTool()
-    //
-    //        return tools
-    //    }()
-    
     func GET(url: String, parameter: [String: String]) -> NSURLRequest {
         
         let req = Alamofire.request(.GET, url, parameters: parameter).responseJSON { (response) -> Void in
