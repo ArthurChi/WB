@@ -13,6 +13,8 @@ let ReteewterCellReuseID = "ReteewterCellReuseID"
 
 class HomeViewController: VistorViewController, NetworkDelegate {
     
+    private lazy var netWorkManager = NetworkTool()
+    
     private var dataSource = [StatusViewModel]()
     
     private lazy var pullupView: UIActivityIndicatorView = {
@@ -33,11 +35,11 @@ class HomeViewController: VistorViewController, NetworkDelegate {
             return
         }
         
-        NetworkTool.sharedTools.delegate = self
-        
-        loadData()
+        netWorkManager.delegate = self
         
         setupTableView()
+        
+        loadData()
     }
     
     func setupTableView() {
@@ -52,7 +54,7 @@ class HomeViewController: VistorViewController, NetworkDelegate {
         tableView.registerClass(ReteewterCell.self, forCellReuseIdentifier: ReteewterCellReuseID)
         
         refreshControl = WBRefreshController()
-        refreshControl?.addTarget(self, action: "loadData", forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl!.addTarget(self, action: "loadData", forControlEvents: UIControlEvents.ValueChanged)
         
         tableView.tableFooterView = pullupView
     }
@@ -89,7 +91,9 @@ class HomeViewController: VistorViewController, NetworkDelegate {
     // MARK: - NetworkDelegate
     func networkToolSuccessResponse<T>(response: T, request: NSURLRequest) {
         
-        dataSource = response as! [StatusViewModel]
+        dataSource = response as! [StatusViewModel] + dataSource
+        
+        print(dataSource.count)
         
         refreshControl?.endRefreshing()
         
@@ -112,12 +116,12 @@ extension HomeViewController {
         var parameters = [String:String]()
         
         if dataSource.count != 0 {
-            parameters["since_id"] = "\(dataSource.first?.statusModel?.id)"
+            parameters["since_id"] = "\(dataSource.first!.statusModel!.id)"
         } else {
             parameters["since_id"] = "0"
         }
         
-        NetworkTool.GETCollection("https://api.weibo.com/2/statuses/home_timeline.json", parameter: parameters, itemType: StatusViewModel())
+        netWorkManager.GETCollection("https://api.weibo.com/2/statuses/home_timeline.json", parameter: parameters, itemType: StatusViewModel())
     }
 }
 

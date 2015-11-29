@@ -28,11 +28,9 @@ class WBRefreshController: UIRefreshControl {
     
     func setupUI() {
         
-        self.tintColor = UIColor.clearColor()
+        tintColor = UIColor.clearColor()
         
         addSubview(refreshView)
-        
-        print(refreshView.bounds.size.width)
         
         refreshView.snp_makeConstraints { (make) -> Void in
             
@@ -64,6 +62,7 @@ class WBRefreshController: UIRefreshControl {
         }
         
         if refreshing {
+            refreshView.startAnimation()
             return
         }
         

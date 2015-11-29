@@ -14,6 +14,7 @@ class UserAccountViewModel: NetworkDelegate {
     private let appSecrt = "3e1d1a205cb27b2c9bd59f85396e308f"
     private let redictUrl = "http://www.baidu.com"
     private let OAuthUrl = "https://api.weibo.com/oauth2/authorize"
+    private lazy var netWorkManager = NetworkTool()
     
     // 用户
     var userAccount: UserAccount?
@@ -79,7 +80,7 @@ class UserAccountViewModel: NetworkDelegate {
     
     func loadAccessToken(code: String, finish:(success: Bool)->()) {
         
-        NetworkTool.sharedTools.delegate = self
+        netWorkManager.delegate = self
         accessTockenRequest = reqAccessTocken(code)
         finishBlock = finish
     }
@@ -127,12 +128,12 @@ extension UserAccountViewModel {
         
         let parameters =  ["client_id": appKey, "client_secret": appSecrt, "grant_type": "authorization_code", "code": code, "redirect_uri": redictUrl]
         
-        return NetworkTool.POST("https://api.weibo.com/oauth2/access_token", parameter:parameters)
+        return netWorkManager.POST("https://api.weibo.com/oauth2/access_token", parameter:parameters)
     }
     
     func reqUserInfo() -> NSURLRequest {
         
         let prarmeters = ["access_token": userAccount!.access_token!, "uid": userAccount!.uid!]
-        return NetworkTool.GET("https://api.weibo.com/2/users/show.json", parameter: prarmeters)
+        return netWorkManager.GET("https://api.weibo.com/2/users/show.json", parameter: prarmeters)
     }
 }

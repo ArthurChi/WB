@@ -89,6 +89,8 @@ final class StatusViewModel: NSObject, ResponseCollectionSerializable {
             status.append(StatusViewModel(status: Status(dict: dict)))
         }
         
+        print("新收到\(status.count)条信息")
+        
         return status;
     }
 }

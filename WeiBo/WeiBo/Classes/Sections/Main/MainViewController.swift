@@ -32,13 +32,17 @@ class MainViewController: UITabBarController {
     
     private func addChildViewController(title: String, imageName: String, controller: VistorViewController) {
         
-        let vc = controller
+        if title == "首页" {
+            controller.tableView.scrollsToTop = true
+        } else {
+            controller.tableView.scrollsToTop = false
+        }
         
-        let nav = UINavigationController(rootViewController: vc)
+        let nav = UINavigationController(rootViewController: controller)
         addChildViewController(nav)
         
-        vc.title = title
-        vc.tabBarItem.image = UIImage(named: imageName)
+        controller.title = title
+        controller.tabBarItem.image = UIImage(named: imageName)
     }
     
 }

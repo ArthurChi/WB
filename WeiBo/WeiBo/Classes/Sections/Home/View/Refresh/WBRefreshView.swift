@@ -57,6 +57,20 @@ class WBRefreshView: UIView {
         freshView.hidden = true
         loadImgView.hidden = false
         loadLabel.hidden = false
+        
+        let animaKey = "transform.rotation"
+        
+        if loadImgView.layer.animationForKey(animaKey) != nil {
+            return
+        }
+        
+        let animation = CABasicAnimation(keyPath: animaKey)
+        animation.toValue = 2 * M_PI
+        animation.repeatCount = MAXFLOAT
+        animation.duration = 0.5
+        animation.removedOnCompletion = false
+        
+        loadImgView.layer.addAnimation(animation, forKey: animaKey)
     }
     
     func stopAnimation() {
