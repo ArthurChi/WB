@@ -8,7 +8,9 @@
 
 import UIKit
 
-class EmotionView: UIView {
+private let emtionViewReuseId = "emtionViewReuseId"
+
+class EmotionView: UIView, UICollectionViewDataSource {
 
     private lazy var emotionManager = EmotionManager.shareEmotionManager
     
@@ -37,10 +39,29 @@ class EmotionView: UIView {
     }()
     
     // 表情栏
-    private lazy var emtionView: UIScrollView = {
+    private lazy var emtionView: UICollectionView = {
         
-        let emtionView = UIScrollView()
+        let col = 7
+        let row = 3
+        
+        let w: CGFloat = self.bounds.size.width / CGFloat(col)
+        let margin: CGFloat =  (self.bounds.height - CGFloat(row+1) * w) * 0.5
+        
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 0
+        layout.itemSize = CGSizeMake(w,w)
+        layout.scrollDirection = .Horizontal
+        layout.sectionInset = UIEdgeInsets(top: margin, left: 0, bottom: margin, right: 0)
+        
+        let emtionView = UICollectionView(frame: CGRectZero, collectionViewLayout: layout)
         emtionView.backgroundColor = UIColor.lightGrayColor()
+        emtionView.pagingEnabled = true
+        emtionView.bounces = false
+        
+        emtionView.registerClass(EmotionViewCell.self, forCellWithReuseIdentifier: emtionViewReuseId)
+        emtionView.dataSource = self
+        
         return emtionView
     }()
     
@@ -48,7 +69,7 @@ class EmotionView: UIView {
     override init(frame: CGRect) {
         
         var rect = UIScreen.mainScreen().bounds
-        rect.size.height = 226
+        rect.size.height = 113 * UIScreen.mainScreen().scale
         
         super.init(frame: rect)
         
@@ -57,7 +78,7 @@ class EmotionView: UIView {
         
         sectionBar.snp_makeConstraints { (make) -> Void in
             make.left.right.bottom.equalTo(self)
-            make.height.equalTo(44)
+            make.height.equalTo(22*UIScreen.mainScreen().scale)
         }
         
         emtionView.snp_makeConstraints { (make) -> Void in
@@ -85,5 +106,37 @@ class EmotionView: UIView {
         default:
             print("错误")
         }
+    }
+    
+    // MARK: - collectionView datasource
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return emotionManager.emotionPackages.count
+    }
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 21 * 4
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(emtionViewReuseId, forIndexPath: indexPath)
+        
+        if indexPath.item % 2 == 0 {
+            cell.backgroundColor = UIColor.greenColor()
+        } else {
+            cell.backgroundColor = UIColor.redColor()
+        }
+        
+        return cell
+    }
+}
+
+class EmotionViewCell: UICollectionViewCell {
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
