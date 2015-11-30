@@ -17,6 +17,26 @@ class MainViewController: UITabBarController {
         setupViewControllers()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // 发布按钮
+        let publishBtn = UIButton()
+        publishBtn.setBackgroundImage(UIImage(imageLiteral: "tabbar_compose_button"), forState: .Normal)
+        publishBtn.setBackgroundImage(UIImage(imageLiteral: "tabbar_compose_button_highlighted"), forState: .Highlighted)
+        publishBtn.setImage(UIImage(named: "tabbar_compose_icon_add"), forState: .Normal)
+        publishBtn.setImage(UIImage(named: "tabbar_compose_icon_add_highlighted"), forState: .Highlighted)
+        
+        publishBtn.addTarget(self, action: "publishBtnDidClick", forControlEvents: .TouchUpInside)
+        publishBtn.backgroundColor = UIColor.orangeColor()
+        tabBar.addSubview(publishBtn)
+        tabBar.bringSubviewToFront(publishBtn)
+        
+        publishBtn.sizeToFit()
+        publishBtn.snp_makeConstraints { (make) -> Void in
+            make.center.equalTo(tabBar)
+        }
+    }
     
     private func setupViewControllers() {
         
@@ -24,25 +44,27 @@ class MainViewController: UITabBarController {
         addChildViewController("首页", imageName: "tabbar_home", controller: HomeViewController())
         // Messsage
         addChildViewController("消息", imageName: "tabbar_message_center", controller: MessageViewController())
+        // a empty viewController
+        addChildViewController("", imageName: "", controller: UIViewController())
         // Discover
         addChildViewController("发现", imageName: "tabbar_discover", controller: DiscoverViewController())
         // Profile
         addChildViewController("我", imageName: "tabbar_profile", controller: ProfileViewController())
     }
     
-    private func addChildViewController(title: String, imageName: String, controller: VistorViewController) {
+    private func addChildViewController(title: String, imageName: String, controller: UIViewController) {
         
-        if title == "首页" {
-            controller.tableView.scrollsToTop = true
-        } else {
-            controller.tableView.scrollsToTop = false
-        }
-        
-        let nav = UINavigationController(rootViewController: controller)
-        addChildViewController(nav)
-        
-        controller.title = title
-        controller.tabBarItem.image = UIImage(named: imageName)
+            let nav = UINavigationController(rootViewController: controller)
+            addChildViewController(nav)
+            
+            controller.title = title
+            controller.tabBarItem.image = UIImage(named: imageName)
     }
     
+    @objc private func publishBtnDidClick() {
+        
+        let publishViewController = UINavigationController(rootViewController: PublishViewController())
+        
+       presentViewController(publishViewController, animated: true, completion: nil)
+    }
 }

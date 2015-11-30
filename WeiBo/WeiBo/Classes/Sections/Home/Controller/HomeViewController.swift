@@ -35,6 +35,8 @@ class HomeViewController: VistorViewController, NetworkDelegate {
             return
         }
         
+        tableView.scrollsToTop = true
+        
         netWorkManager.delegate = self
         
         setupTableView()

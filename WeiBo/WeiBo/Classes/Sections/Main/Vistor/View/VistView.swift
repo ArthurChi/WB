@@ -126,7 +126,6 @@ class VistView: UIView {
         
         anim.removedOnCompletion = false
         
-        // 添加到图层
         revolveImgView.layer.addAnimation(anim, forKey: nil)
     }
 }

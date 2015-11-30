@@ -21,6 +21,10 @@ class VistorViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if tableView != nil {
+            tableView.scrollsToTop = false
+        }
     }
 
     func setupVistView() {
