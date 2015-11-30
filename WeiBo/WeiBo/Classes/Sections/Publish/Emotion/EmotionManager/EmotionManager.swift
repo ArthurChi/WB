@@ -42,7 +42,8 @@ class EmotionManager {
         
         let packagePath = NSBundle.mainBundle().pathForResource("info", ofType: "plist", inDirectory:  "Emoticons.bundle/" + path)
         
-        let package = NSDictionary(contentsOfFile: packagePath!) as! [String:AnyObject]
+        var package = NSDictionary(contentsOfFile: packagePath!) as! [String:AnyObject]
+        package["packagePath"] = "Emoticons.bundle/" + path
         
         emotionPackages.append(EmotionPackage(dict: package))
     }

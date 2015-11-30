@@ -114,17 +114,14 @@ class EmotionView: UIView, UICollectionViewDataSource {
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 21 * 4
+        return emotionManager.emotionPackages[section].emotion.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(emtionViewReuseId, forIndexPath: indexPath)
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(emtionViewReuseId, forIndexPath: indexPath) as! EmotionViewCell
         
-        if indexPath.item % 2 == 0 {
-            cell.backgroundColor = UIColor.greenColor()
-        } else {
-            cell.backgroundColor = UIColor.redColor()
-        }
+        let emotionItem = emotionManager.emotionPackages[indexPath.section].emotion[indexPath.item]
+        cell.emotionItem = emotionItem
         
         return cell
     }
@@ -132,8 +129,23 @@ class EmotionView: UIView, UICollectionViewDataSource {
 
 class EmotionViewCell: UICollectionViewCell {
     
+    var emotionItem: EmotionItem! {
+        didSet {
+            let path = "\(NSBundle.mainBundle().bundlePath)/\(emotionItem.png ?? "")"
+            emotionBtn.setImage(UIImage(contentsOfFile: path), forState: .Normal)
+        }
+    }
+    
+    private lazy var emotionBtn = UIButton()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        contentView.addSubview(emotionBtn)
+        
+        emotionBtn.snp_makeConstraints { (make) -> Void in
+            make.edges.equalTo(self)
+        }
     }
 
     required init?(coder aDecoder: NSCoder) {
