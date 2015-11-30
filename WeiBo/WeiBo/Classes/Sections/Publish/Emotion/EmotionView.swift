@@ -131,8 +131,20 @@ class EmotionViewCell: UICollectionViewCell {
     
     var emotionItem: EmotionItem! {
         didSet {
-            let path = "\(NSBundle.mainBundle().bundlePath)/\(emotionItem.png ?? "")"
-            emotionBtn.setImage(UIImage(contentsOfFile: path), forState: .Normal)
+            let emotionPath = "\(NSBundle.mainBundle().bundlePath)/\(emotionItem.png ?? "")"
+            emotionBtn.setImage(UIImage(contentsOfFile: emotionPath), forState: .Normal)
+            
+            emotionBtn.setTitle(emotionItem.code?.emoji, forState: .Normal)
+            emotionBtn.titleLabel?.font = UIFont.systemFontOfSize(32)
+            
+            if emotionItem.isRemove {
+                emotionBtn.setImage(UIImage(named: "compose_emotion_delete_highlighted"), forState: .Normal)
+            }
+            
+            if emotionItem.isEmpty {
+                emotionBtn.setImage(nil, forState: .Normal)
+                emotionBtn.setTitle(nil, forState: .Normal)
+            }
         }
     }
     

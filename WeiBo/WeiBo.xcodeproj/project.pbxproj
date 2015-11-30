@@ -38,6 +38,7 @@
 		2A69D46D1C0BF7C2002AEC5D /* Emoticons.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2A69D46C1C0BF7C2002AEC5D /* Emoticons.bundle */; };
 		2A69D4711C0BFDED002AEC5D /* EmotionPackage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A69D4701C0BFDED002AEC5D /* EmotionPackage.swift */; };
 		2A69D4731C0C27D8002AEC5D /* EmotionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A69D4721C0C27D8002AEC5D /* EmotionItem.swift */; };
+		2A69D4751C0C3F0C002AEC5D /* String+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A69D4741C0C3F0C002AEC5D /* String+Extention.swift */; };
 		2A79EA861BFAD680002FB4F5 /* UIButton+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A79EA851BFAD680002FB4F5 /* UIButton+Extention.swift */; };
 		2AEC42A31C07F41100068764 /* HomeCellBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEC429B1C07F41100068764 /* HomeCellBottomView.swift */; };
 		2AEC42A41C07F41100068764 /* HomeCellTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEC429C1C07F41100068764 /* HomeCellTopView.swift */; };
@@ -107,6 +108,7 @@
 		2A69D46C1C0BF7C2002AEC5D /* Emoticons.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Emoticons.bundle; sourceTree = "<group>"; };
 		2A69D4701C0BFDED002AEC5D /* EmotionPackage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmotionPackage.swift; sourceTree = "<group>"; };
 		2A69D4721C0C27D8002AEC5D /* EmotionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmotionItem.swift; sourceTree = "<group>"; };
+		2A69D4741C0C3F0C002AEC5D /* String+Extention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extention.swift"; sourceTree = "<group>"; };
 		2A79EA851BFAD680002FB4F5 /* UIButton+Extention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Extention.swift"; sourceTree = "<group>"; };
 		2AEC429B1C07F41100068764 /* HomeCellBottomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCellBottomView.swift; sourceTree = "<group>"; };
 		2AEC429C1C07F41100068764 /* HomeCellTopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCellTopView.swift; sourceTree = "<group>"; };
@@ -442,6 +444,7 @@
 				2A79EA851BFAD680002FB4F5 /* UIButton+Extention.swift */,
 				2A51228C1BFCC10500EB0859 /* UILabel+Extention.swift */,
 				2A5F38581BFD6C9100813720 /* Alamofire+Extention.swift */,
+				2A69D4741C0C3F0C002AEC5D /* String+Extention.swift */,
 			);
 			path = Extention;
 			sourceTree = "<group>";
@@ -677,6 +680,7 @@
 				2A69D4651C0BEEB8002AEC5D /* PublishViewController.swift in Sources */,
 				2A69D4731C0C27D8002AEC5D /* EmotionItem.swift in Sources */,
 				2AEC42AB1C07F4D100068764 /* WBRefreshController.swift in Sources */,
+				2A69D4751C0C3F0C002AEC5D /* String+Extention.swift in Sources */,
 				2A5122821BFC38F100EB0859 /* NewFeatureViewController.swift in Sources */,
 				2A5F38571BFD605200813720 /* User.swift in Sources */,
 				2A5122851BFCA15300EB0859 /* NotificationNames.swift in Sources */,

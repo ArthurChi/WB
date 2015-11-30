@@ -26,6 +26,7 @@ class EmotionPackage: NSObject {
     override func setValue(value: AnyObject?, forKey key: String) {
         if key == "emoticons" {
             
+            var index = 0
             for emotionDict in value as! [[String:AnyObject]] {
                 
                 var emotionDictTmp = emotionDict
@@ -34,7 +35,28 @@ class EmotionPackage: NSObject {
                     emotionDictTmp["png"] = "\(packagePath)/\(png)"
                 }
                 
+                if index == 20 {
+                    
+                    let emtionRemoveItem = EmotionItem(isRemove: true)
+                    emotion.append(emtionRemoveItem)
+                    index = 0
+                }
+                index++
+                
                 let emotionItem = EmotionItem(dict: emotionDictTmp)
+                emotion.append(emotionItem)
+            }
+            
+            let motionCount = emotion.count % 21
+            
+            if motionCount != 0 {
+                
+                for _ in motionCount..<20 {
+                    let emotionItem = EmotionItem(isEmpty: true)
+                    emotion.append(emotionItem)
+                }
+                
+                let emotionItem = EmotionItem(isRemove: true)
                 emotion.append(emotionItem)
             }
         }
