@@ -14,7 +14,7 @@ class EmotionManager {
     
     lazy var emotionPackages: [EmotionPackage] = {
         
-        let emotionPackageLastest = EmotionPackage(dict: ["group_name_cn":"最近"])
+        let emotionPackageLastest = EmotionPackage(dict: ["group_name_cn":"最近", "emoticons":[[String:AnyObject]]()])
         
         var emotionPackages = [emotionPackageLastest]
         

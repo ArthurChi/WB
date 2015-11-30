@@ -49,7 +49,7 @@ class EmotionPackage: NSObject {
             
             let motionCount = emotion.count % 21
             
-            if motionCount != 0 {
+            if motionCount != 0  || emotion.count == 0 {
                 
                 for _ in motionCount..<20 {
                     let emotionItem = EmotionItem(isEmpty: true)

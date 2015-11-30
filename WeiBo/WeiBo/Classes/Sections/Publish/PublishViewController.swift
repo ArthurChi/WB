@@ -23,6 +23,13 @@ class PublishViewController: UIViewController {
         setupUI()
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        textView.becomeFirstResponder()
+        
+    }
+    
     func setupUI() {
         view.backgroundColor = UIColor.whiteColor()
         

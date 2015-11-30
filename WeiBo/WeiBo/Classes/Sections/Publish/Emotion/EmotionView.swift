@@ -19,7 +19,7 @@ class EmotionView: UIView, UICollectionViewDataSource {
         
         let sectionBar = UIToolbar()
         
-        sectionBar.backgroundColor = UIColor.grayColor()
+        sectionBar.tintColor = UIColor.darkGrayColor()
         
         sectionBar.items = [UIBarButtonItem]()
         
@@ -39,13 +39,13 @@ class EmotionView: UIView, UICollectionViewDataSource {
     }()
     
     // 表情栏
-    private lazy var emtionView: UICollectionView = {
+    lazy var emtionView: UICollectionView = {
         
         let col = 7
         let row = 3
         
         let w: CGFloat = self.bounds.size.width / CGFloat(col)
-        let margin: CGFloat =  (self.bounds.height - CGFloat(row+1) * w) * 0.5
+        let margin: CGFloat =  (self.bounds.height - CGFloat(row + Int(UIScreen.mainScreen().scale)-1) * w) * 0.5
         
         let layout = UICollectionViewFlowLayout()
         layout.minimumInteritemSpacing = 0
@@ -55,7 +55,7 @@ class EmotionView: UIView, UICollectionViewDataSource {
         layout.sectionInset = UIEdgeInsets(top: margin, left: 0, bottom: margin, right: 0)
         
         let emtionView = UICollectionView(frame: CGRectZero, collectionViewLayout: layout)
-        emtionView.backgroundColor = UIColor.lightGrayColor()
+        emtionView.backgroundColor = UIColor.whiteColor()
         emtionView.pagingEnabled = true
         emtionView.bounces = false
         
@@ -73,6 +73,20 @@ class EmotionView: UIView, UICollectionViewDataSource {
         
         super.init(frame: rect)
         
+        setupUI()
+        
+        dispatch_async(dispatch_get_main_queue()) { () -> Void in
+            self.emtionView.scrollToItemAtIndexPath(NSIndexPath(forItem: 0, inSection: 1), atScrollPosition: .Left, animated: true)
+            print(self.emtionView.contentSize)
+        }
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setupUI() {
+        
         addSubview(sectionBar)
         addSubview(emtionView)
         
@@ -86,26 +100,11 @@ class EmotionView: UIView, UICollectionViewDataSource {
             make.bottom.equalTo(sectionBar.snp_top)
         }
     }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     // MARK: - Event Response
     func sectionBarItemDidClicked(item: UIBarButtonItem) {
-        
-        switch item.tag {
-        case 1000:
-            print("最近")
-        case 1001:
-            print("默认")
-        case 1002:
-            print("浪小花")
-        case 1003:
-            print("emoji")
-        default:
-            print("错误")
-        }
+        print(self.emtionView.contentSize)
+        emtionView.scrollToItemAtIndexPath(NSIndexPath(forItem: 0, inSection: item.tag-1000), atScrollPosition: .Left, animated: true)
     }
     
     // MARK: - collectionView datasource
