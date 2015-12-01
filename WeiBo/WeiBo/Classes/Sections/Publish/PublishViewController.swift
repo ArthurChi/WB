@@ -10,9 +10,47 @@ import UIKit
 
 let textViewMargin = 8
 
-class PublishViewController: UIViewController {
+class PublishViewController: UIViewController, UITextViewDelegate {
 
-    private lazy var textView = UITextView()
+    private lazy var textView: UITextView = {
+        
+        let textView = UITextView()
+        
+        textView.font = UIFont.systemFontOfSize(18)
+        textView.textColor = UIColor.darkGrayColor()
+        
+        // 始终允许垂直滚动
+        textView.alwaysBounceVertical = true
+        // 拖拽关闭键盘
+        textView.keyboardDismissMode = UIScrollViewKeyboardDismissMode.OnDrag
+        
+        // 设置文本视图的代理
+        textView.delegate = self
+        
+        return textView
+    }()
+    
+    private lazy var toolBar: UIToolbar = {
+        
+        let toolBar = UIToolbar()
+        
+        let toobBarItmeImgs = ["compose_toolbar_picture","compose_trendbutton_background","compose_keyboardbutton_background","compose_emoticonbutton_background"]
+        
+        toolBar.items = [UIBarButtonItem]()
+        
+        for imgName in toobBarItmeImgs {
+            
+            toolBar.items?.append(UIBarButtonItem(image: UIImage(named: imgName), style: .Plain, target: self, action: ""))
+            
+            toolBar.items?.append(UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: self, action: ""))
+        }
+        
+        toolBar.items?.removeLast()
+        
+        toolBar.tintColor = UIColor.orangeColor()
+        
+        return toolBar
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,16 +64,15 @@ class PublishViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        textView.becomeFirstResponder()
+//        textView.becomeFirstResponder()
         
     }
     
     func setupUI() {
         view.backgroundColor = UIColor.whiteColor()
         
-        textView.layer.borderWidth = 0.5 * UIScreen.mainScreen().scale
-        textView.layer.borderColor = UIColor.grayColor().CGColor
         view.addSubview(textView)
+        view.addSubview(toolBar)
         
         textView.snp_makeConstraints { (make) -> Void in
             make.left.equalTo(view)
@@ -45,6 +82,11 @@ class PublishViewController: UIViewController {
         }
         
         textView.inputView = EmotionView()
+        
+        toolBar.snp_makeConstraints { (make) -> Void in
+            make.left.right.bottom.equalTo(view)
+            make.height.equalTo(44)
+        }
     }
     
     func cancel() {
