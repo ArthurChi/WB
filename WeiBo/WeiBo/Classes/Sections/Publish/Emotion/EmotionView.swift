@@ -77,7 +77,6 @@ class EmotionView: UIView, UICollectionViewDataSource {
         
         dispatch_async(dispatch_get_main_queue()) { () -> Void in
             self.emtionView.scrollToItemAtIndexPath(NSIndexPath(forItem: 0, inSection: 1), atScrollPosition: .Left, animated: true)
-            print(self.emtionView.contentSize)
         }
     }
 
@@ -103,7 +102,6 @@ class EmotionView: UIView, UICollectionViewDataSource {
     
     // MARK: - Event Response
     func sectionBarItemDidClicked(item: UIBarButtonItem) {
-        print(self.emtionView.contentSize)
         emtionView.scrollToItemAtIndexPath(NSIndexPath(forItem: 0, inSection: item.tag-1000), atScrollPosition: .Left, animated: true)
     }
     

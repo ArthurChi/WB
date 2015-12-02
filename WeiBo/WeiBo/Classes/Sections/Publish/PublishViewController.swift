@@ -38,9 +38,11 @@ class PublishViewController: UIViewController, UITextViewDelegate {
         
         toolBar.items = [UIBarButtonItem]()
         
+        var index = 1000
         for imgName in toobBarItmeImgs {
             
-            toolBar.items?.append(UIBarButtonItem(image: UIImage(named: imgName), style: .Plain, target: self, action: ""))
+            toolBar.items?.append(UIBarButtonItem(image: UIImage(named: imgName), style: .Plain, target: self, action: "toolBarItemClick:"))
+            toolBar.items?.last?.tag = index++
             
             toolBar.items?.append(UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: self, action: ""))
         }
@@ -52,6 +54,8 @@ class PublishViewController: UIViewController, UITextViewDelegate {
         return toolBar
     }()
     
+    private lazy var emotionView: EmotionView = EmotionView()
+    // MARK: - life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -61,11 +65,22 @@ class PublishViewController: UIViewController, UITextViewDelegate {
         setupUI()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardChange:", name: UIKeyboardWillChangeFrameNotification, object: .None)
+    }
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-//        textView.becomeFirstResponder()
+        textView.becomeFirstResponder()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
         
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillChangeFrameNotification, object: .None)
     }
     
     func setupUI() {
@@ -78,14 +93,51 @@ class PublishViewController: UIViewController, UITextViewDelegate {
             make.left.equalTo(view)
             make.right.equalTo(view)
             make.top.equalTo(view).offset(60)
-            make.height.equalTo(200)
+            make.bottom.equalTo(toolBar)
         }
-        
-        textView.inputView = EmotionView()
         
         toolBar.snp_makeConstraints { (make) -> Void in
             make.left.right.bottom.equalTo(view)
             make.height.equalTo(44)
+        }
+    }
+    
+    // MARK: - Event response
+    func keyboardChange(notification:NSNotification) {
+        print(notification)
+        
+        let animationDuration = notification.userInfo![UIKeyboardAnimationDurationUserInfoKey] as! NSTimeInterval
+        let animationDurationCurve = notification.userInfo![UIKeyboardAnimationCurveUserInfoKey] as! Int
+        
+        let rect = (notification.userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
+        let offset = -UIScreen.mainScreen().bounds.height + rect.origin.y
+        
+        toolBar.snp_updateConstraints { (make) -> Void in
+            make.bottom.equalTo(view.snp_bottom).offset(offset)
+        }
+        
+        UIView.animateWithDuration(animationDuration) { () -> Void in
+            
+            UIView.setAnimationCurve(UIViewAnimationCurve(rawValue: animationDurationCurve)!)
+            
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    // MARK: tool bar event
+    func toolBarItemClick(toolBarItem:UIBarButtonItem) {
+        
+        textView.resignFirstResponder()
+        
+        switch toolBarItem.tag {
+        case 1002:
+            textView.inputView = nil
+            textView.becomeFirstResponder()
+        case 1003:
+            textView.inputView = EmotionView()
+            textView.becomeFirstResponder()
+        default:
+            print(toolBarItem.tag)
         }
     }
     
