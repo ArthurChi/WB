@@ -10,8 +10,14 @@ import UIKit
 
 private let emtionViewReuseId = "emtionViewReuseId"
 
-class EmotionView: UIView, UICollectionViewDataSource {
+protocol EmotionViewDelegate {
+    func emotionView(emotionView:EmotionView, inputEmotionItem:EmotionItem)
+}
 
+class EmotionView: UIView, UICollectionViewDataSource, UICollectionViewDelegate {
+
+    var delegate: EmotionViewDelegate?
+    
     private lazy var emotionManager = EmotionManager.shareEmotionManager
     
     // 选项栏
@@ -61,6 +67,7 @@ class EmotionView: UIView, UICollectionViewDataSource {
         
         emtionView.registerClass(EmotionViewCell.self, forCellWithReuseIdentifier: emtionViewReuseId)
         emtionView.dataSource = self
+        emtionView.delegate = self
         
         return emtionView
     }()
@@ -122,16 +129,23 @@ class EmotionView: UIView, UICollectionViewDataSource {
         
         return cell
     }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        
+        let emotionItem = emotionManager.emotionPackages[indexPath.section].emotion[indexPath.item]
+        
+        delegate?.emotionView(self, inputEmotionItem: emotionItem)
+    }
 }
 
 class EmotionViewCell: UICollectionViewCell {
     
     var emotionItem: EmotionItem! {
         didSet {
-            let emotionPath = "\(NSBundle.mainBundle().bundlePath)/\(emotionItem.png ?? "")"
+            let emotionPath = emotionItem.imgPath ?? ""
             emotionBtn.setImage(UIImage(contentsOfFile: emotionPath), forState: .Normal)
             
-            emotionBtn.setTitle(emotionItem.code?.emoji, forState: .Normal)
+            emotionBtn.setTitle(emotionItem.emoji, forState: .Normal)
             emotionBtn.titleLabel?.font = UIFont.systemFontOfSize(32)
             
             if emotionItem.isRemove {
@@ -145,7 +159,13 @@ class EmotionViewCell: UICollectionViewCell {
         }
     }
     
-    private lazy var emotionBtn = UIButton()
+    private lazy var emotionBtn: UIButton = {
+        let emotionBtn = UIButton()
+        
+        emotionBtn.userInteractionEnabled = false
+        
+        return emotionBtn
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)

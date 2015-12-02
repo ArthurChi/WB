@@ -11,11 +11,23 @@ import UIKit
 class EmotionItem: NSObject {
     
     var chs: String?
-    var png:String?
-    var code:String?
+    var png: String? {
+        didSet {
+            imgPath = "\(NSBundle.mainBundle().bundlePath)/\(png ?? "")"
+        }
+    }
+    
+    var code: String? {
+        didSet {
+            emoji = code?.emoji
+        }
+    }
     
     var isRemove = false
     var isEmpty = false
+    var emoji: String?
+    
+    var imgPath: String?
     
     init(dict:[String:AnyObject]) {
         super.init()

@@ -65,7 +65,15 @@ class PublishViewController: UIViewController {
         return toolBar
     }()
     
-    private lazy var emotionView: EmotionView = EmotionView()
+    private lazy var emotionView: EmotionView = {
+        
+        let emotionView = EmotionView()
+        
+        emotionView.delegate = self
+        
+        return emotionView
+    }()
+    
     // MARK: - life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -116,7 +124,7 @@ class PublishViewController: UIViewController {
         }
         
         placeholderLabel.snp_makeConstraints { (make) -> Void in
-            make.top.left.equalTo(15)
+            make.top.left.equalTo(8)
         }
     }
     
@@ -152,7 +160,7 @@ class PublishViewController: UIViewController {
             textView.inputView = nil
             textView.becomeFirstResponder()
         case 1003:
-            textView.inputView = EmotionView()
+            textView.inputView = emotionView
             textView.becomeFirstResponder()
         default:
             print(toolBarItem.tag)
@@ -171,10 +179,18 @@ class PublishViewController: UIViewController {
     
 }
 
+// MARK: - UITextViewDelegate
 extension PublishViewController: UITextViewDelegate {
     
     func textViewDidChange(textView: UITextView) {
         navigationItem.rightBarButtonItem?.enabled = textView.hasText()
         placeholderLabel.hidden = textView.hasText()
+    }
+}
+
+// MARK: - EmotionViewDelegate
+extension PublishViewController: EmotionViewDelegate {
+    func emotionView(emotionView: EmotionView, inputEmotionItem: EmotionItem) {
+        textView.inputEmotion(inputEmotionItem)
     }
 }

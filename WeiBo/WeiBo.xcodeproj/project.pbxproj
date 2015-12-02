@@ -50,6 +50,7 @@
 		2AEC42AB1C07F4D100068764 /* WBRefreshController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEC42AA1C07F4D100068764 /* WBRefreshController.swift */; };
 		2AEC42AD1C07F51000068764 /* WBRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEC42AC1C07F51000068764 /* WBRefreshView.swift */; };
 		2AEC42AF1C07F52E00068764 /* WBRefreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AEC42AE1C07F52E00068764 /* WBRefreshView.xib */; };
+		2AFFFE6A1C0EF3A400C51D09 /* UITextView+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFFFE691C0EF3A400C51D09 /* UITextView+Extention.swift */; };
 		F83A7C3CC60135ED4AEE2123 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA6FA0ECB1521F2F9B5F02D0 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -120,6 +121,7 @@
 		2AEC42AA1C07F4D100068764 /* WBRefreshController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WBRefreshController.swift; sourceTree = "<group>"; };
 		2AEC42AC1C07F51000068764 /* WBRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WBRefreshView.swift; sourceTree = "<group>"; };
 		2AEC42AE1C07F52E00068764 /* WBRefreshView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WBRefreshView.xib; sourceTree = "<group>"; };
+		2AFFFE691C0EF3A400C51D09 /* UITextView+Extention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextView+Extention.swift"; sourceTree = "<group>"; };
 		9225B882A871A0523D7F33A5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		BA6FA0ECB1521F2F9B5F02D0 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2949786A0827325E3D4030F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -445,6 +447,7 @@
 				2A51228C1BFCC10500EB0859 /* UILabel+Extention.swift */,
 				2A5F38581BFD6C9100813720 /* Alamofire+Extention.swift */,
 				2A69D4741C0C3F0C002AEC5D /* String+Extention.swift */,
+				2AFFFE691C0EF3A400C51D09 /* UITextView+Extention.swift */,
 			);
 			path = Extention;
 			sourceTree = "<group>";
@@ -680,6 +683,7 @@
 				2A69D4651C0BEEB8002AEC5D /* PublishViewController.swift in Sources */,
 				2A69D4731C0C27D8002AEC5D /* EmotionItem.swift in Sources */,
 				2AEC42AB1C07F4D100068764 /* WBRefreshController.swift in Sources */,
+				2AFFFE6A1C0EF3A400C51D09 /* UITextView+Extention.swift in Sources */,
 				2A69D4751C0C3F0C002AEC5D /* String+Extention.swift in Sources */,
 				2A5122821BFC38F100EB0859 /* NewFeatureViewController.swift in Sources */,
 				2A5F38571BFD605200813720 /* User.swift in Sources */,
