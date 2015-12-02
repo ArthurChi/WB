@@ -10,8 +10,19 @@ import UIKit
 
 let textViewMargin = 8
 
-class PublishViewController: UIViewController, UITextViewDelegate {
+class PublishViewController: UIViewController {
 
+    private lazy var placeholderLabel: UILabel = {
+        
+        let placeholderLabel = UILabel()
+        
+        placeholderLabel.text = "输入一些内容..."
+        placeholderLabel.font = UIFont.systemFontOfSize(16)
+        placeholderLabel.textColor = UIColor.grayColor()
+        
+        return placeholderLabel
+    }()
+    
     private lazy var textView: UITextView = {
         
         let textView = UITextView()
@@ -62,6 +73,8 @@ class PublishViewController: UIViewController, UITextViewDelegate {
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "取消", style: .Done, target: self, action: "cancel")
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "发布", style: .Done, target: self, action: "submit")
         
+        navigationItem.rightBarButtonItem?.enabled = false
+        
         setupUI()
     }
     
@@ -88,17 +101,22 @@ class PublishViewController: UIViewController, UITextViewDelegate {
         
         view.addSubview(textView)
         view.addSubview(toolBar)
-        
-        textView.snp_makeConstraints { (make) -> Void in
-            make.left.equalTo(view)
-            make.right.equalTo(view)
-            make.top.equalTo(view).offset(60)
-            make.bottom.equalTo(toolBar)
-        }
+        textView.addSubview(placeholderLabel)
         
         toolBar.snp_makeConstraints { (make) -> Void in
             make.left.right.bottom.equalTo(view)
             make.height.equalTo(44)
+        }
+        
+        textView.snp_makeConstraints { (make) -> Void in
+            make.left.equalTo(view)
+            make.right.equalTo(view)
+            make.top.equalTo(view)
+            make.bottom.equalTo(toolBar)
+        }
+        
+        placeholderLabel.snp_makeConstraints { (make) -> Void in
+            make.top.left.equalTo(15)
         }
     }
     
@@ -151,4 +169,12 @@ class PublishViewController: UIViewController, UITextViewDelegate {
     
     
     
+}
+
+extension PublishViewController: UITextViewDelegate {
+    
+    func textViewDidChange(textView: UITextView) {
+        navigationItem.rightBarButtonItem?.enabled = textView.hasText()
+        placeholderLabel.hidden = textView.hasText()
+    }
 }
