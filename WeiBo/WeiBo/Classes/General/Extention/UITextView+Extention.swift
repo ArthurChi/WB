@@ -26,19 +26,11 @@ extension UITextView {
             return
         }
         
-        let t = NSTextAttachment(data: .None, ofType: .None)
-        t.image = UIImage(contentsOfFile: emotionItem.imgPath!)
+        let t = EmoticonAttachment(emoticon: emotionItem)
         
-        let lineHeight = font!.lineHeight
-        print(lineHeight)
-        t.bounds = CGRect(x: 0, y: -10, width: lineHeight, height: lineHeight)
-        
-        let imageText = NSMutableAttributedString(attributedString: NSAttributedString(attachment: t))
-        
-        imageText.addAttribute(NSFontAttributeName, value: font!, range: NSRange(location: 0, length: 1))
+        let imageText = t.imageText(font!)
         
         let strM = NSMutableAttributedString(attributedString: attributedText)
-        
         strM.replaceCharactersInRange(selectedRange, withAttributedString: imageText)
         
         let range = selectedRange
@@ -46,7 +38,6 @@ extension UITextView {
         selectedRange = NSRange(location: range.location + 1, length: 0)
         
         delegate?.textViewDidChange?(self)
-
     }
 }
 
